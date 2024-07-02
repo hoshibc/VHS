@@ -47,7 +47,7 @@ void test() {
 }
 void test2(){  
     
-     PIDDataSet TestPara={1.5,0.1,0.15};
+    PIDDataSet TestPara={1.5,0.1,0.15};
     MoveEncoderPID(TestPara, 100, 12, 0.4, 0, true);
     TurnMaxTimePID(TestPara, 30, 0.5,true);
     MoveEncoderPID(TestPara, 100, 13, 0.4, 30, true);
@@ -60,12 +60,13 @@ void test2(){
     TurnMaxTimePID(TestPara, -84, 0.8, true);
     RunRoller(-100);
     MoveEncoderPID(TestPara, -100, 25, 0.4,-84, true);
-    TurnMaxTimePID(TestPara,60, 0.5, true);
-    Pistake.set(true);
-    MoveEncoderPID(TestPara, -100, 60, 0.4, 60, true);
-    Pistake.set(false);
+    TurnMaxTimePID(TestPara,63, 0.5, true);
     wait(500,msec);
-    MoveEncoderPID(TestPara, 100, 10, 0.4, 60, true);
+    Pistake.set(true);
+    MoveEncoderPID(TestPara, -100, 70, 0.4, 63, true);
+    Pistake.set(false);
+    
+    MoveEncoderPID(TestPara, 100, 10, 0.4, 70, true);
     TurnMaxTimePID(TestPara, -12, 0.9, true);
     MoveEncoderPID(TestPara, 100, 23, 0.4, -12, false);
 

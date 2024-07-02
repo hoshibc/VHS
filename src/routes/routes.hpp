@@ -7,4 +7,6 @@
 
 extern void test();
 extern void test2();
+extern void risky();
+extern void ringquad();
 #endif

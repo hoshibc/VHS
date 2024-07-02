@@ -243,13 +243,12 @@ if(AutoSelectorVal==2)// awp mid steal
 
 if(AutoSelectorVal==3)// 5 Ball rush
 {
-  
+  risky();
 } 
 
 if(AutoSelectorVal==4)// Elim-Steal
 {
-
-  
+  ringquad();
 }
 
 if(AutoSelectorVal==5)// empty

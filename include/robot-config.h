@@ -10,7 +10,7 @@ extern motor RF;
 extern motor RM;
 extern motor LB;
 extern motor RB;
-extern motor Roller;
+extern motor_group Roller;
 extern digital_out Tilt;
 extern digital_out Clamp;
 extern digital_out RightBackWing;
