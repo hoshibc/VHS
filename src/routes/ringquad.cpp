@@ -35,7 +35,7 @@ void ringquad(){
     MoveEncoderPID(TestPara, -100, 75, 0.2, 70, true); //drive into ring 4
     MoveEncoderPID(TestPara, -30, 20, 0.2, 70, true); //drive into ring 4
     TurnMaxTimePID(TestPara, -180, 0.8, true);
-    MoveEncoderPID(TestPara, -100, 100, 0.2, 70, true); //drive into ladder
+    MoveEncoderPID(TestPara, -100, 24, 0.2, 70, false); //drive into ladder
 
     //wait(200,msec); //wait for mogo to be dropped
 }

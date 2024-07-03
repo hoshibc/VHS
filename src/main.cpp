@@ -307,45 +307,61 @@ int ATask(void)
 
 int ButtonPressingX,XTaskActiv;
 int ButtonPressingY,YTaskActiv;
-
+int ButtonPressingA,ATaskActiv;
 int PTask(void)
 {
     while(true)
     {
       //Toggles Tilt
-    if(XTaskActiv==0&&Controller1.ButtonX.pressing()&&ButtonPressingX==0)
+    if(XTaskActiv==0&&Controller1.ButtonX.pressing()&&ButtonPressingX==0)//Finding if ButtonX is pressing and if it was held down before.
     {
-      ButtonPressingX=1;
-      XTaskActiv=1;
+      ButtonPressingX=1;//Button is now pressed
+      XTaskActiv=1;//Task is now active
       Tilt.set(true);
     }
 
     else if(!Controller1.ButtonX.pressing())ButtonPressingX=0;
 
-    else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX==0)
+    else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX=0)//Finding if task is active and if ButtonX wasn't pressed before
     {
-      ButtonPressingX=1;
-      XTaskActiv=0;
+      ButtonPressingX=1;//Button is now pressed
+      XTaskActiv=0;//Task is now NOT running
       Tilt.set(false);
     }
     //----------------------
       //Toggles Clamp
-    if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0)
+    if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0)//Finding if ButtonY is pressing and if it was held down before.
     {
-      ButtonPressingY=1;
-      YTaskActiv=1;
+      ButtonPressingY=1;//Button is now pressed
+      YTaskActiv=1;//Task is now active
       Clamp.set(true);
     }
 
-    else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;
+    else if(!Controller1.ButtonY.pressing())ButtonPressingY=0;//Button is not pressed so pressing is set to 0
 
-    else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0)
+    else if(YTaskActiv==1&&Controller1.ButtonY.pressing()&&ButtonPressingY==0)//Findingif Ytask already happened(clamp active)
     {
-      ButtonPressingY=1;
-      YTaskActiv=0;
+      ButtonPressingY=1;//Button pressed
+      YTaskActiv=0;//Task is now NOT happening 
       Clamp.set(false);
     }
+    //Toggles Pistake(The piston on the intake)
+    if(ATaskActiv==0&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
+    {
+      ButtonPressingA=1;
+      ATaskActiv=1;
+      Pistake.set(true);
+    else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
 
+    else if(ATaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
+
+    {
+      ButtonPressingA=1;
+      ATaskActiv=0;
+      Pistake.set(false);
+      
+    }
+    }
 
 
   }

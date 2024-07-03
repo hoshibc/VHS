@@ -17,10 +17,16 @@ motor LB = motor(PORT13, ratio6_1, true);
 motor RB = motor(PORT20, ratio6_1, false);
 motor In1 = motor(PORT21, ratio6_1, false);
 motor In2 = motor(PORT10, ratio6_1, true);
+
+//Motor Groups
 motor_group Roller = motor_group(In1,In2);
+
+//Pistons
 digital_out Pistake = digital_out(Brain.ThreeWirePort.D);
 digital_out Tilt = digital_out(Brain.ThreeWirePort.B);
 digital_out Clamp = digital_out(Brain.ThreeWirePort.A);
+
+//Gyro and stuff for PID
 inertial Gyro = inertial(PORT2);
 //Naming convention: 
 // Important variables
