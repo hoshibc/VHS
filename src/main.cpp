@@ -103,9 +103,9 @@ if(AutoSelectorVal==1){
 Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#39FF14");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("GOAL SIDE");
+Brain.Screen.print("Useless");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("6 BALL");
+Brain.Screen.print("Stupid");
 Brain.Screen.setFont(monoM);
   Brain.Screen.setFillColor("#39FF14");
 
@@ -117,9 +117,9 @@ Brain.Screen.setFillColor(black);
   Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#39FF14");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("MATCHLOAD");
+Brain.Screen.print("Blue Side");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("StealAWP");
+Brain.Screen.print("SAFEAWP");
 Brain.Screen.setFont(monoM);
   Brain.Screen.setFillColor("#39FF14");
 }
@@ -131,9 +131,9 @@ Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#39FF14");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("GOAL SIDE");
+Brain.Screen.print("BLUESIDE");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("5 BALL");
+Brain.Screen.print("RISKY");
 Brain.Screen.setFont(monoM);  
   Brain.Screen.setFillColor("#39FF14");
 }
@@ -145,9 +145,9 @@ Brain.Screen.setFillColor(black);
   Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#39FF14");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("MATCHLOAD");
+Brain.Screen.print("BLUESIDE");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("Elim-Steal");
+Brain.Screen.print("RISKY AWP");
 Brain.Screen.setFont(monoM); 
   Brain.Screen.setFillColor("#39FF14");
 
@@ -235,25 +235,25 @@ if(AutoSelectorVal==1)//Quali close 6 triball auto
   test();
 }
 
-if(AutoSelectorVal==2)// awp mid steal
+if(AutoSelectorVal==2)// Safe awp
 {
   test2();
 
 }
 
-if(AutoSelectorVal==3)// 5 Ball rush
+if(AutoSelectorVal==3)//Risky
 {
   risky();
 } 
 
-if(AutoSelectorVal==4)// Elim-Steal
+if(AutoSelectorVal==4)// risky AWP
 {
   ringquad();
 }
 
-if(AutoSelectorVal==5)// empty
+if(AutoSelectorVal==5)// sample auto route
 {
-   //test();
+  sample();
 }
 
 
