@@ -14,7 +14,7 @@ void risky(){
     TurnMaxTimePID(TestPara, 30, 0.4,true); //turn to face flat edge of goal
     MoveEncoderPID(TestPara, 100, 13, 0.4, 30, true); //move back to align with goal
     MoveEncoderPID(TestPara, 30, 13, 0.4, 30, true); //move slower to prevent goal from being knocked
-    Clamp.set(false); //close clamp
+    Clamp.set(true); //close clamp
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,30, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo

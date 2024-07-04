@@ -12,7 +12,7 @@ void test() {
     PIDDataSet TestPara={1.5,0.1,0.15};
     MoveEncoderPID(TestPara, 100, 36 , 0.4,0,true);
     MoveEncoderPID(TestPara, 30, 10, 0.4,0,true);
-    Clamp.set(false);
+    Clamp.set(true);
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,0, true);
     Tilt.set(false);
@@ -52,7 +52,7 @@ void test2(){
     TurnMaxTimePID(TestPara, 30, 0.5,true);
     MoveEncoderPID(TestPara, 100, 13, 0.4, 30, true);
     MoveEncoderPID(TestPara, 40, 13, 0.4, 30, true);
-    Clamp.set(false);
+    Clamp.set(true);
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,30, true);
     Tilt.set(false);

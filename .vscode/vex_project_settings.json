@@ -1,10 +1,10 @@
 {
 	"project": {
-		"name": "MOA",
+		"name": "compautos",
 		"slot": 3,
 		"description": "Empty V5 C++ Project",
 		"platform": "V5",
-		"creationDate": "Wed, 03 Jul 2024 11:27:25 GMT",
+		"creationDate": "Thu, 04 Jul 2024 03:04:31 GMT",
 		"language": "cpp",
 		"sdkVersion": "V5_20240223_11_00_00",
 		"cpp": {

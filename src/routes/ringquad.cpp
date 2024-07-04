@@ -14,7 +14,7 @@ void ringquad(){
     TurnMaxTimePID(TestPara, 30, 0.4,true); //turn to face flat edge of goal
     MoveEncoderPID(TestPara, 100, 13, 0.4, 30, true); //move back to align with goal
     MoveEncoderPID(TestPara, 30, 13, 0.4, 30, true); //move slower to prevent goal from being knocked
-    Clamp.set(false); //close clamp
+    Clamp.set(true); //close clamp
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,30, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo
@@ -29,13 +29,16 @@ void ringquad(){
     TurnMaxTimePID(TestPara, -160, 0.4, true); 
     MoveEncoderPID(TestPara, 100, 18, 0.4, -160, true); //backup closer to ring 3
     TurnMaxTimePID(TestPara, -90, 0.4, true);  //turn to face ring 3
-    MoveEncoderPID(TestPara, -100, 15, 0.4, -90, true); //drive into ring 3
-    TurnMaxTimePID(TestPara, 70, 0.8, true);
+    MoveEncoderPID(TestPara, -100, 18, 0.4, -90, true); //drive into ring 3
+    TurnMaxTimePID(TestPara, 73, 0.8, true);
     Pistake.set(true);
-    MoveEncoderPID(TestPara, -100, 75, 0.2, 70, true); //drive into ring 4
-    MoveEncoderPID(TestPara, -30, 20, 0.2, 70, true); //drive into ring 4
-    TurnMaxTimePID(TestPara, -180, 0.8, true);
-    MoveEncoderPID(TestPara, -100, 24, 0.2, 70, false); //drive into ladder
+    MoveEncoderPID(TestPara, -100, 50, 0.2, 73, true); //drive into ring 4
+    MoveEncoderPID(TestPara, -30, 23, 0.2, 73, true); //drive into ring 4
+    Pistake.set(false);
+    wait(300,msec);
+    MoveEncoderPID(TestPara, 70, 15, 0.4, 73,true);
+    TurnMaxTimePID(TestPara, 165, 0.8, true);
+    MoveEncoderPID(TestPara, -70, 24, 0.2, 165, false); //drive into ladder
 
     //wait(200,msec); //wait for mogo to be dropped
 }

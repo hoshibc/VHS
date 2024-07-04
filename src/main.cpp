@@ -37,7 +37,7 @@ bool EXIT;
 void pre_auton(void) {
    EXIT=false;
   Tilt.set(true);
-  Clamp.set(true);
+  Clamp.set(false);
   PX=0;
   JX=0;
   AutoSelectorVal=0;
@@ -253,7 +253,7 @@ if(AutoSelectorVal==4)// risky AWP
 
 if(AutoSelectorVal==5)// sample auto route
 {
-  sample();
+  
 }
 
 
@@ -322,7 +322,7 @@ int PTask(void)
 
     else if(!Controller1.ButtonX.pressing())ButtonPressingX=0;
 
-    else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX=0)//Finding if task is active and if ButtonX wasn't pressed before
+    else if(XTaskActiv==1&&Controller1.ButtonX.pressing()&&ButtonPressingX==0)//Finding if task is active and if ButtonX wasn't pressed before
     {
       ButtonPressingX=1;//Button is now pressed
       XTaskActiv=0;//Task is now NOT running
@@ -351,6 +351,7 @@ int PTask(void)
       ButtonPressingA=1;
       ATaskActiv=1;
       Pistake.set(true);
+    }
     else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
 
     else if(ATaskActiv==1&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
@@ -363,10 +364,10 @@ int PTask(void)
     }
     }
 
-
-  }
   return 0;
-}
+  }
+  
+
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
 /*                              User Control Task                            */
