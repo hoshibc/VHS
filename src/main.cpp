@@ -57,7 +57,7 @@ Gyro.calibrate();
 Brain.Screen.drawRectangle(0,0,500,500);
 
 Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(2,10);
 Brain.Screen.print("FLIR TIMEOUT");
 
@@ -101,13 +101,13 @@ Brain.Screen.clearScreen();
 if(AutoSelectorVal==1){
   Brain.Screen.setFillColor(black);
 Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("Useless");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("Stupid");
 Brain.Screen.setFont(monoM);
-  Brain.Screen.setFillColor("#39FF14");
+  Brain.Screen.setFillColor("#f8b195");
 
 }
 
@@ -115,13 +115,13 @@ if(AutoSelectorVal==2){
 Brain.Screen.setFillColor(black);
 
   Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("Blue Side");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("SAFEAWP");
 Brain.Screen.setFont(monoM);
-  Brain.Screen.setFillColor("#39FF14");
+  Brain.Screen.setFillColor("#f8b195");
 }
 
 if(AutoSelectorVal==3){
@@ -129,13 +129,13 @@ if(AutoSelectorVal==3){
 Brain.Screen.setFillColor(black);
 
     Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("BLUESIDE");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("RISKY");
 Brain.Screen.setFont(monoM);  
-  Brain.Screen.setFillColor("#39FF14");
+  Brain.Screen.setFillColor("#f8b195");
 }
 
 if(AutoSelectorVal==4){
@@ -143,13 +143,13 @@ if(AutoSelectorVal==4){
 Brain.Screen.setFillColor(black);
 
   Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("BLUESIDE");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("RISKY AWP");
 Brain.Screen.setFont(monoM); 
-  Brain.Screen.setFillColor("#39FF14");
+  Brain.Screen.setFillColor("#f8b195");
 
 }
 
@@ -157,13 +157,13 @@ if(AutoSelectorVal==5){
 
 Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("GOAL SIDE");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("GS-AWP");
 Brain.Screen.setFont(monoM); 
-  Brain.Screen.setFillColor("#39FF14");
+  Brain.Screen.setFillColor("#f8b195");
 
 }
 
@@ -171,13 +171,13 @@ if(AutoSelectorVal==6){
   
   Brain.Screen.setFillColor(black);
     Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("MATCHLOAD");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("ONLY AWP");
 Brain.Screen.setFont(monoM); 
-  Brain.Screen.setFillColor("#39FF14");
+  Brain.Screen.setFillColor("#f8b195");
 
   }
 
@@ -185,19 +185,19 @@ if(AutoSelectorVal==7){
 
 Brain.Screen.setFillColor(black);
 Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
 Brain.Screen.print("SKILLS");
 Brain.Screen.setCursor(4,10);
 Brain.Screen.print("SKILLS");
 Brain.Screen.setFont(monoM); 
-Brain.Screen.setFillColor("#39FF14");
+Brain.Screen.setFillColor("#f8b195");
 
 }
 
 Brain.Screen.setFillColor(black);
 Brain.Screen.setFont(monoXL);
-Brain.Screen.setPenColor("#39FF14");
+Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(5,10);
 Brain.Screen.print("AUTO CONFIRMED");
 

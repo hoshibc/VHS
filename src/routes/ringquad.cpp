@@ -19,26 +19,26 @@ void ringquad(){
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,30, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo
     RunRoller(-100); //run intake
-    TurnMaxTimePID(TestPara, -140, 0.8, true); //turn to face ring 1
-    MoveEncoderPID(TestPara, -100, 26, 0.4, -140, true);
+    TurnMaxTimePID(TestPara, -135, 0.8, true); //turn to face ring 1
+    MoveEncoderPID(TestPara, -100, 23, 0.4, -135, true);
     wait(200,msec);
-    TurnMaxTimePID(TestPara, -105, 0.4, true); //turn to face ring 2
-    MoveEncoderPID(TestPara, -100, 10, 0.4, -105, true); //pickup ring 2
-    wait(200,msec);
-    MoveEncoderPID(TestPara, 100, 7, 0.4, -105, true); 
-    TurnMaxTimePID(TestPara, -160, 0.4, true); 
-    MoveEncoderPID(TestPara, 100, 18, 0.4, -160, true); //backup closer to ring 3
-    TurnMaxTimePID(TestPara, -90, 0.4, true);  //turn to face ring 3
-    MoveEncoderPID(TestPara, -100, 18, 0.4, -90, true); //drive into ring 3
-    TurnMaxTimePID(TestPara, 73, 0.8, true);
+    TurnMaxTimePID(TestPara, -98, 0.4, true); //turn to face ring 2
+    MoveEncoderPID(TestPara, -100, 14, 0.4, -98, true); //pickup ring 2
+    wait(100,msec);
+    //MoveEncoderPID(TestPara, 100, 7, 0.4, -105, true); 
+    TurnMaxTimePID(TestPara, 10, 0.4, true); 
+    MoveEncoderPID(TestPara, -100, 28, 0.4, 10, true); //backup closer to ring 3
+    //TurnMaxTimePID(TestPara, -90, 0.4, true);  //turn to face ring 3
+   // MoveEncoderPID(TestPara, -100, 18, 0.4, -90, true); //drive into ring 3
+    TurnMaxTimePID(TestPara, 78, 0.8, true);
     Pistake.set(true);
-    MoveEncoderPID(TestPara, -100, 50, 0.2, 73, true); //drive into ring 4
-    MoveEncoderPID(TestPara, -30, 23, 0.2, 73, true); //drive into ring 4
+    MoveEncoderPID(TestPara, -100, 50, 0.2, 78, true); //drive into ring 4
+    MoveEncoderPID(TestPara, -30, 6, 0.2, 78, true); //drive into ring 4
     Pistake.set(false);
-    wait(300,msec);
-    MoveEncoderPID(TestPara, 70, 15, 0.4, 73,true);
-    TurnMaxTimePID(TestPara, 165, 0.8, true);
-    MoveEncoderPID(TestPara, -70, 24, 0.2, 165, false); //drive into ladder
+    wait(400,msec);
+    MoveEncoderPID(TestPara, 70, 15, 0.4, 78,true);
+    TurnMaxTimePID(TestPara, 140, 0.8, true);
+    MoveEncoderPID(TestPara, -70, 10, 0.2, 140, false); //drive into ladder
 
     //wait(200,msec); //wait for mogo to be dropped
 }
