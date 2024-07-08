@@ -251,7 +251,7 @@ if(AutoSelectorVal==4)// risky AWP
   ringquad();
 }
 
-if(AutoSelectorVal==5)// sample auto route
+if(AutoSelectorVal==5)// 
 {
   
 }
