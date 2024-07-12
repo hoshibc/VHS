@@ -22,7 +22,7 @@ motor In2 = motor(PORT10, ratio6_1, true);
 motor_group Roller = motor_group(In1,In2);
 
 //Pistons
-digital_out Pistake = digital_out(Brain.ThreeWirePort.D);
+digital_out Pistake = digital_out(Brain.ThreeWirePort.C);
 digital_out Tilt = digital_out(Brain.ThreeWirePort.B);
 digital_out Clamp = digital_out(Brain.ThreeWirePort.A);
 
