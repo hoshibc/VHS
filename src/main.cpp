@@ -35,7 +35,9 @@ competition Competition;
 bool SP;
 bool EXIT;
 void pre_auton(void) {
+
    EXIT=false;
+  Pistake.set(true);
   Tilt.set(true);
   Clamp.set(false);
   PX=0;
@@ -103,9 +105,9 @@ if(AutoSelectorVal==1){
 Brain.Screen.setFont(monoXL);
 Brain.Screen.setPenColor("#f8b195");
 Brain.Screen.setCursor(3,10);
-Brain.Screen.print("Useless");
+Brain.Screen.print("AWP");
 Brain.Screen.setCursor(4,10);
-Brain.Screen.print("Stupid");
+Brain.Screen.print("Risky");
 Brain.Screen.setFont(monoM);
   Brain.Screen.setFillColor("#f8b195");
 
@@ -232,7 +234,7 @@ Zeroing(true,true);
 //Put Auto route function into if statements to use autoselector
 if(AutoSelectorVal==1)//Quali close 6 triball auto 
 {
-  test();
+  AWP();
 }
 
 if(AutoSelectorVal==2)// Safe awp

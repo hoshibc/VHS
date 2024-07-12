@@ -41,7 +41,7 @@ void DisplayWords(void)
   Brain.Screen.setPenColor("#f8b195");
   Brain.Screen.setFont(monoM);
   Brain.Screen.setCursor(3,3);
-  Brain.Screen.print("Useless");
+  Brain.Screen.print("AWP");
 
   Brain.Screen.setCursor(7,3);
   Brain.Screen.print("Risky");

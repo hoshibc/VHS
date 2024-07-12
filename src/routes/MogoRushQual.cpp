@@ -13,8 +13,7 @@ void MogoRushQual() {
     MoveEncoderPID(TestPara, 100, -4.3, 0.4,30, true);//peel back to get ready to turn to ring 1
     RunRoller(-100);
     TurnMaxTimePID(TestPara, 135, 0.8, true); //turn to face ring 1
-    MoveEncoderPID(TestPara, -100,24, 0.3, 135, true);//Drive to Ring 1     
-//i hate niggers8
+    MoveEncoderPID(TestPara, -100,24, 0.3, 135, true);//Drive to Ring 1    
 }
 
 void RedMogoRushQual()
