@@ -255,7 +255,7 @@ if(AutoSelectorVal==4)// risky AWP
 
 if(AutoSelectorVal==5)// 
 {
-  
+  MogoRushQual();
 }
 
 
@@ -310,6 +310,7 @@ int ATask(void)
 int ButtonPressingX,XTaskActiv;
 int ButtonPressingY,YTaskActiv;
 int ButtonPressingA,ATaskActiv;
+int ButtonPressingU,UTaskActiv;
 int PTask(void)
 {
     while(true)
@@ -347,7 +348,26 @@ int PTask(void)
       YTaskActiv=0;//Task is now NOT happening 
       Clamp.set(false);
     }
+
     //Toggles Pistake(The piston on the intake)
+    if(UTaskActiv==0&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0)
+    {
+      ButtonPressingU=1;
+      UTaskActiv=1;
+      OPMECH.set(true);
+    }
+    else if(!Controller1.ButtonUp.pressing())ButtonPressingU=0;
+
+    else if(UTaskActiv==1&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0)
+
+    {
+      ButtonPressingU=1;
+      UTaskActiv=0;
+      OPMECH.set(false);
+      
+    }
+  
+  
     if(ATaskActiv==0&&Controller1.ButtonA.pressing()&&ButtonPressingA==0)
     {
       ButtonPressingA=1;
