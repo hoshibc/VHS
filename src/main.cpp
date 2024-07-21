@@ -256,7 +256,7 @@ if(AutoSelectorVal==4)// risky AWP
 if(AutoSelectorVal==5)// 
 {
   MogoRushQual();
-}
+}                   
 
 
 if(AutoSelectorVal==6)//AWP only
