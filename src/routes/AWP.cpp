@@ -96,8 +96,8 @@ void redAWP(){
     RunRoller(-100); //run intake
     //wait(380,msec);
     MoveEncoderPID(TestPara, -100, 28, 0.4, -106, true); //grab ring 2
-    TurnMaxTimePID(TestPara, -150,0.4,true);
-    MoveEncoderPID(TestPara, -85, 16, 0.4, -150, true); //grab ring 3
+    TurnMaxTimePID(TestPara, -130,0.4,true);
+    MoveEncoderPID(TestPara, -85, 16, 0.4, -130, true); //grab ring 3
     TurnMaxTimePID(TestPara, 50, 0.7, true);
     MoveEncoderPID(TestPara, -100, 55, 0.1, 50,true);
     // TurnMaxTimePID(TestPara, -115,0.4,true); 

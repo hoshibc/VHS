@@ -13,4 +13,5 @@ extern void MogoRushQual();
 extern void RedMogoRushQual();
 extern void RedSafeMogo();
 extern void AWP();
+extern void redAWP();
 #endif

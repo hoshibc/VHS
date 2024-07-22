@@ -239,7 +239,7 @@ if(AutoSelectorVal==1)//Quali close 6 triball auto
 
 if(AutoSelectorVal==2)// Safe awp
 {
-  test2();
+  redAWP();
 
 }
 
