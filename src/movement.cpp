@@ -145,7 +145,7 @@ if(fabs(CSpeed)<fabs((double)Speed))
 }
 
   SensorVals=ChassisUpdate();
-  LGV=SensorVals.HDG-ABSHDG;
+  LGV=SensorVals.HDG-ABSHDG*Inversion_Constant;
   if(LGV>180) LGV=LGV-360;
   PVal=KVals.kp*LGV;
   IVal=IVal+KVals.ki*LGV*0.02;
@@ -187,7 +187,7 @@ void TurnMaxTimePID(PIDDataSet KVals,double DeltaAngle,double TE, bool brake){
   while(Brain.Timer.value() <= TE)
   {
   SensorVals=ChassisUpdate();
-  LGV=SensorVals.HDG-DeltaAngle;
+  LGV=SensorVals.HDG-DeltaAngle*Inversion_Constant;
   if(LGV>180) LGV=LGV-360;
   PVal=KVals.kp*LGV;
   IVal=IVal+KVals.ki*LGV*0.02;
@@ -221,7 +221,7 @@ void MaxTimePIDTurnOneSide(PIDDataSet KVals,double DeltaAngle,double TE, bool br
   while(Brain.Timer.value() <= TE)
   {
   SensorVals=ChassisUpdate();
-  LGV=SensorVals.HDG-DeltaAngle;
+  LGV=SensorVals.HDG-DeltaAngle*Inversion_Constant;
   if(LGV>180) LGV=LGV-360;
   PVal=KVals.kp*LGV;
   IVal=IVal+KVals.ki*LGV*0.02;
@@ -263,7 +263,7 @@ if(fabs(CSpeed)<fabs((double)Speed))
 }
 
   SensorVals=ChassisUpdate();
-    LGV=SensorVals.HDG-ABSHDG;
+    LGV=SensorVals.HDG-ABSHDG*Inversion_Constant;
   if(LGV>180) LGV=LGV-360;
   PVal=KVals.kp*LGV;
   IVal=IVal+KVals.ki*LGV*0.02;
