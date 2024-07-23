@@ -283,8 +283,9 @@ if(AutoSelectorVal==2)// Safe awp
 
 if(AutoSelectorVal==3)//Risky
 {
-  risky();
-} 
+  MoveEncoderPID(TestPara, -100, 10, 0.3, 0, true);
+  TurnMaxTimePID(TestPara, 90, 0.4, true);
+  } 
 
 if(AutoSelectorVal==4)// risky AWP
 {
