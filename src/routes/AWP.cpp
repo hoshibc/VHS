@@ -79,23 +79,23 @@ void redAWP(){
     RunRoller(-100); //score onto alliance stake
     wait(1450, msec); //wait for scoring both rings onto alliance stake
     RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -60, 5.8, 0.5, -60, true);// delta angle needs to be 58(ik its weird)
-    TurnMaxTimePID(TestPara, 80, .8, true);
+    MoveEncoderPID(TestPara, -60, 7, 0.5, -60, true);// delta angle needs to be 58(ik its weird)
+    TurnMaxTimePID(TestPara, 75, .8, true);
     Tilt.set(true); // down to grab mogo
 
-    MoveEncoderPID(TestPara, 100, 30, 0.5, 80, true);
-    MoveEncoderPID(TestPara, 70,10,0.3,80,true);
+    MoveEncoderPID(TestPara, 100, 30, 0.5, 75, true);
+    MoveEncoderPID(TestPara, 70,10,0.3,75,true);
      //slow down to grab mogo
     Clamp.set(true); //close clamp 
     wait(380,msec);
-    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 80, true); //move back to let goal sit in
+    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 75, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo
    // wait(380,msec);
-
-    TurnMaxTimePID(TestPara,-105, 0.6,true); 
+    RunRoller(100);
+    TurnMaxTimePID(TestPara,-95, 0.6,true); 
     RunRoller(-100); //run intake
     //wait(380,msec);
-    MoveEncoderPID(TestPara, -100, 27, 0.4, -105, true); //grab ring 2
+    MoveEncoderPID(TestPara, -100, 25, 0.4, -95, true); //grab ring 2
     TurnMaxTimePID(TestPara, -150, 0.4,true);
     MoveEncoderPID(TestPara, -85, 13, 0.4, -150, true); //grab ring 3
     TurnMaxTimePID(TestPara, 50, 0.7, true);
@@ -104,11 +104,11 @@ void redAWP(){
    
     //MoveEncoderPID(TestPara, -100, 55, 0.1, 60,true);
     //MoveEncoderPID(TestPara, -100, 20, 0.3, 0, true);
-
     // TurnMaxTimePID(TestPara, -115,0.4,true); 
     // MoveEncoderPID(TestPara, -100, 13, 0.4, -115, true); //grab ring 4
     // wait(400,msec);
-    // TurnMaxTimePID(TestPara, -35,0.6,true); //turn to face ladder
+    // TurnMaxTimePID(TestPara, -35,0.6,true); //turn t
+    //o face ladder
     // MoveEncoderPID(TestPara, -100, 30, 0.4, -35, false); //touch ladder
    //should be within 15 seconds
 }
