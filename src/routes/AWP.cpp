@@ -71,31 +71,31 @@ void redAWP(){
     MoveEncoderPID(TestPara, -75, 6, 0.3, 0, true ); // drive forward to clear ring
     wait(200, msec);
     TurnMaxTimePID(TestPara, -140, 0.6, true );        
-    MoveEncoderPID(TestPara, 50, 7.5, 0.5, -140, true);
-   
-    TurnMaxTimePID(TestPara, -60, 0.8, true);
-    MoveEncoderPID(TestPara, 100, 11, 0.5, -60, true);
+    MoveEncoderPID(TestPara, 50, 11.8, 0.5, -140, true);
+    MoveEncoderPID(TestPara, -50, .5, 0.5, -140, true);
+    TurnMaxTimePID(TestPara, -63, 0.8, true);
+    MoveEncoderPID(TestPara, 100, 11, 0.5, -63, true);
     wait(100,msec);
     RunRoller(-100); //score onto alliance stake
     wait(1450, msec); //wait for scoring both rings onto alliance stake
     RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -60, 7, 0.5, -60, true);// delta angle needs to be 58(ik its weird)
-    TurnMaxTimePID(TestPara, 75, .8, true);
+    MoveEncoderPID(TestPara, -60, 4.2, 0.5, -63, true);// delta angle needs to be 58(ik its weird)
+    TurnMaxTimePID(TestPara, 78, 0.8, true);
     Tilt.set(true); // down to grab mogo
 
-    MoveEncoderPID(TestPara, 100, 30, 0.5, 75, true);
-    MoveEncoderPID(TestPara, 70,10,0.3,75,true);
+    MoveEncoderPID(TestPara, 97.5, 30, 0.5, 78, true);
+    MoveEncoderPID(TestPara, 70,10,0.3,78,true);
      //slow down to grab mogo
     Clamp.set(true); //close clamp 
     wait(380,msec);
-    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 75, true); //move back to let goal sit in
+    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 78, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo
    // wait(380,msec);
     RunRoller(100);
-    TurnMaxTimePID(TestPara,-95, 0.6,true); 
+    TurnMaxTimePID(TestPara,-100, 0.6,true); 
     RunRoller(-100); //run intake
     //wait(380,msec);
-    MoveEncoderPID(TestPara, -100, 25, 0.4, -95, true); //grab ring 2
+    MoveEncoderPID(TestPara, -100, 23, 0.4, -100, true); //grab ring 2
     TurnMaxTimePID(TestPara, -150, 0.4,true);
     MoveEncoderPID(TestPara, -85, 13, 0.4, -150, true); //grab ring 3
     TurnMaxTimePID(TestPara, 50, 0.7, true);
@@ -111,4 +111,51 @@ void redAWP(){
     //o face ladder
     // MoveEncoderPID(TestPara, -100, 30, 0.4, -35, false); //touch ladder
    //should be within 15 seconds
+}
+
+void redSafeAWP() {
+     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
+    Pistake.set(false); //intake down
+    Tilt.set(false); // ohly tilt 
+    RunRoller(-100);//
+    wait(180, msec);
+    MoveEncoderPID(TestPara, 75, 2.2, 0.3, 0, true);
+    RunRoller(0);
+    MoveEncoderPID(TestPara, -75, 6, 0.3, 0, true ); // drive forward to clear ring
+    wait(200, msec);
+    TurnMaxTimePID(TestPara, -140, 0.6, true );        
+    MoveEncoderPID(TestPara, 50, 11.8, 0.5, -140, true);
+    MoveEncoderPID(TestPara, -50, .5, 0.5, -140, true);
+    TurnMaxTimePID(TestPara, -63, 0.8, true);
+    MoveEncoderPID(TestPara, 100, 11, 0.5, -63, true);
+    wait(100,msec);
+    RunRoller(-100); //score onto alliance stake
+    wait(1450, msec); //wait for scoring both rings onto alliance stake
+    RunRoller(0); //run intake
+    MoveEncoderPID(TestPara, -60, 4.2, 0.5, -63, true);// delta angle needs to be 58(ik its weird)
+    TurnMaxTimePID(TestPara, 78, 0.8, true);
+    Tilt.set(true); // down to grab mogo
+
+    MoveEncoderPID(TestPara, 97.5, 30, 0.5, 78, true);
+    MoveEncoderPID(TestPara, 70,10,0.3,78,true);
+     //slow down to grab mogo
+    Clamp.set(true); //close clamp 
+    wait(380,msec);
+    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 78, true); //move back to let goal sit in
+    Tilt.set(false); // tilt mogo
+   // wait(380,msec);
+    RunRoller(100);
+    TurnMaxTimePID(TestPara,-140, 0.6,true); 
+    RunRoller(-100);
+    MoveEncoderPID(TestPara, -100, 30, 0.3, -140, true);
+    wait(1000,msec);
+    TurnMaxTimePID(TestPara, 15, 0.4, true);
+    MoveEncoderPID(TestPara, -100, 12 , 0.3, 15, true);  
+    RunRoller(0);
+    MoveEncoderPID(TestPara, -100, 25, 0.4, 15, true);                                                                  
+
+
+
+
+
 }

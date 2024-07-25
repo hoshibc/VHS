@@ -118,7 +118,7 @@ Brain.Screen.setFont(monoM);
 if(AutoSelectorVal==3){
   Brain.Screen.drawRectangle(1,100,100,50);
   Brain.Screen.setCursor(7,3);
-  Brain.Screen.print("n/a");
+  Brain.Screen.print("Safe AWP");
 
 Brain.Screen.setFillColor(black);
 

@@ -272,7 +272,7 @@ Zeroing(true,true);
 //Put Auto route function into if statements to use autoselector
 if(AutoSelectorVal==1)//Quali close 6 triball auto 
 {
-  AWP();
+  redSafeAWP();
 }
 
 if(AutoSelectorVal==2)// Safe awp
@@ -283,8 +283,7 @@ if(AutoSelectorVal==2)// Safe awp
 
 if(AutoSelectorVal==3)//Risky
 {
-  MoveEncoderPID(TestPara, -100, 10, 0.3, 0, true);
-  TurnMaxTimePID(TestPara, 90, 0.4, true);
+ 
   } 
 
 if(AutoSelectorVal==4)// risky AWP
