@@ -63,34 +63,36 @@ void AWP(){
 void redAWP(){
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
     Pistake.set(false); //intake down
-    Tilt.set(false); // ohly tilt 
+    
+    
     RunRoller(-100);//
     wait(180, msec);
     MoveEncoderPID(TestPara, 75, 2.2, 0.3, 0, true);
     RunRoller(0);
     MoveEncoderPID(TestPara, -75, 6, 0.3, 0, true ); // drive forward to clear ring
     wait(200, msec);
-    TurnMaxTimePID(TestPara, -140, 0.6, true );        
+    TurnMaxTimePID(TestPara, -140, 0.8, true );        
     MoveEncoderPID(TestPara, 50, 11.8, 0.5, -140, true);
-    MoveEncoderPID(TestPara, -50, .5, 0.5, -140, true);
+    MoveEncoderPID(TestPara, -40, .5, 0.5, -140, true);
     TurnMaxTimePID(TestPara, -63, 0.8, true);
-    MoveEncoderPID(TestPara, 100, 11, 0.5, -63, true);
+    MoveEncoderPID(TestPara, 70, 7, 0.5, -63, true);
+    MoveEncoderPID(TestPara, 40, 4 , 0.3, -64, true);
     wait(100,msec);
     RunRoller(-100); //score onto alliance stake
-    wait(1450, msec); //wait for scoring both rings onto alliance stake
+    wait(600, msec); //wait for scoring both rings onto alliance stake
     RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -60, 4.2, 0.5, -63, true);// delta angle needs to be 58(ik its weird)
-    TurnMaxTimePID(TestPara, 78, 0.8, true);
-    Tilt.set(true); // down to grab mogo
+    MoveEncoderPID(TestPara, -40, 4, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
+    TurnMaxTimePID(TestPara, 77, 0.8, true);
+    Tilt.set(true); // up to grab mogo
 
-    MoveEncoderPID(TestPara, 97.5, 30, 0.5, 78, true);
-    MoveEncoderPID(TestPara, 70,10,0.3,78,true);
+    MoveEncoderPID(TestPara, 97.5, 36, 0.5, 77, true);
+    MoveEncoderPID(TestPara, 50,15,0.6,77,true);
      //slow down to grab mogo
     Clamp.set(true); //close clamp 
     wait(380,msec);
-    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 78, true); //move back to let goal sit in
+    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 77, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo
-   // wait(380,msec);
+
     RunRoller(100);
     TurnMaxTimePID(TestPara,-100, 0.6,true); 
     RunRoller(-100); //run intake
@@ -116,43 +118,44 @@ void redAWP(){
 void redSafeAWP() {
      PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
     Pistake.set(false); //intake down
-    Tilt.set(false); // ohly tilt 
+    
     RunRoller(-100);//
     wait(180, msec);
     MoveEncoderPID(TestPara, 75, 2.2, 0.3, 0, true);
     RunRoller(0);
     MoveEncoderPID(TestPara, -75, 6, 0.3, 0, true ); // drive forward to clear ring
     wait(200, msec);
-    TurnMaxTimePID(TestPara, -140, 0.6, true );        
+    TurnMaxTimePID(TestPara, -140, 0.8, true );        
     MoveEncoderPID(TestPara, 50, 11.8, 0.5, -140, true);
-    MoveEncoderPID(TestPara, -50, .5, 0.5, -140, true);
+    MoveEncoderPID(TestPara, -40, .5, 0.5, -140, true);
     TurnMaxTimePID(TestPara, -63, 0.8, true);
-    MoveEncoderPID(TestPara, 100, 11, 0.5, -63, true);
+    MoveEncoderPID(TestPara, 70, 7, 0.5, -63, true);
+    MoveEncoderPID(TestPara, 40, 4 , 0.3, -64, true);
     wait(100,msec);
     RunRoller(-100); //score onto alliance stake
-    wait(1450, msec); //wait for scoring both rings onto alliance stake
+    wait(600, msec); //wait for scoring both rings onto alliance stake
     RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -60, 4.2, 0.5, -63, true);// delta angle needs to be 58(ik its weird)
-    TurnMaxTimePID(TestPara, 78, 0.8, true);
-    Tilt.set(true); // down to grab mogo
+    MoveEncoderPID(TestPara, -40, 4, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
+    TurnMaxTimePID(TestPara, 77, 0.8, true);
+    Tilt.set(true); // up to grab mogo
 
-    MoveEncoderPID(TestPara, 97.5, 30, 0.5, 78, true);
-    MoveEncoderPID(TestPara, 70,10,0.3,78,true);
+    MoveEncoderPID(TestPara, 97.5, 36, 0.5, 77, true);
+    MoveEncoderPID(TestPara, 50,15,0.6,77,true);
      //slow down to grab mogo
     Clamp.set(true); //close clamp 
     wait(380,msec);
-    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 78, true); //move back to let goal sit in
+    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 77, true); //move back to let goal sit in
     Tilt.set(false); // tilt mogo
    // wait(380,msec);
     RunRoller(100);
-    TurnMaxTimePID(TestPara,-140, 0.6,true); 
+    TurnMaxTimePID(TestPara,-150, 0.6,true); 
     RunRoller(-100);
-    MoveEncoderPID(TestPara, -100, 30, 0.3, -140, true);
-    wait(1000,msec);
-    TurnMaxTimePID(TestPara, 15, 0.4, true);
-    MoveEncoderPID(TestPara, -100, 12 , 0.3, 15, true);  
+    MoveEncoderPID(TestPara, -90, 30, 0.6, -150, true);
+    wait(200,msec);
+    TurnMaxTimePID(TestPara, 10, 0.8, true);
+    MoveEncoderPID(TestPara, -100 ,15 , 0.3, 10, true);  
     RunRoller(0);
-    MoveEncoderPID(TestPara, -100, 25, 0.4, 15, true);                                                                  
+    MoveEncoderPID(TestPara, -100, 23, 0.4, 10, true);                                                                  
 
 
 

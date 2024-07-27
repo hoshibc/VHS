@@ -39,13 +39,14 @@ void pre_auton(void) {
 
    EXIT=false;
   Pistake.set(true);
-  Tilt.set(true);
+  Tilt.set(false);
   Clamp.set(false);
   PX=0;
   JX=0;
   AutoSelectorVal=0;
   SP=false;
   // Initializing Robot Configuration. DO NOT REMOVE!
+  wait(1000,msec);
   vexcodeInit();
 Gyro.calibrate();
 
