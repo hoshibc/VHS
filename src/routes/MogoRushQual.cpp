@@ -8,18 +8,19 @@
 
 void MogoRushQual() {
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
-    MoveEncoderPID(TestPara, 100, 48,0.4, 0, true);//Grab mogo rush angled
+    MoveEncoderPID(TestPara, 100, 50,0.4, -4, true);//Grab mogo rush angled
     OPMECH.set(true);
     MoveEncoderPID(TestPara, 100, 4, 0.4, 0, true);
     MoveEncoderPID(TestPara, -100, 25, 0.4, 0, true );
     TurnMaxTimePID(TestPara, 30, 0.5, true);
     MoveEncoderPID(TestPara,-100,  38, 0.4, 30, true);
+    OPMECH.set(false);
     MoveEncoderPID(TestPara, 100, 2 , 0.3, 30, true);
     TurnMaxTimePID(TestPara, 120, 0.5, true);
-    OPMECH.set(false);
+    
     Tilt.set(true);
 
-    MoveEncoderPID(TestPara, -60, 8, 0.4, 120, true);
+    MoveEncoderPID(TestPara, -60, 8.3, 0.4, 120, true);
     //MoveEncoderPID(TestPara, 60, 2, 0.4, 120, true);
     TurnMaxTimePID(TestPara, -20, 0.7, true);
     MoveEncoderPID(TestPara, 100, 27, 0.4, -20, true);
@@ -35,17 +36,10 @@ void MogoRushQual() {
     RunRoller(-100);
 
     MoveEncoderPID(TestPara, -100, 30, 0.4, -90, true);
-    wait(1000,msec);
-    RunRoller(0);
-    TurnMaxTimePID(TestPara, 30, 0.5, true);
-    MoveEncoderPID(TestPara, -100, 30, 0.3, 30, true);
-    TurnMaxTimePID(TestPara, -40, 0.5, true);
-    MoveEncoderPID(TestPara, -100, 18, 0.4, -40, true);
-    RunRoller(100);
-    wait(200, msec);
-    RunRoller(-100);
-    wait(700, msec);
-    MoveEncoderPID(TestPara, 100, 70, 0.4, -50, true);
+    wait(300,msec);
+    
+    TurnMaxTimePID(TestPara, 120, 0.9, true);
+    MoveEncoderPID(TestPara, -100, 48, 0.3, 120, true);
 
 }
 
