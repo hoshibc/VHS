@@ -8,52 +8,7 @@
 
 void AWP(){
     //blue side
-    PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
-    Pistake.set(false); //intake down
-    Tilt.set(false); // ohly tilt 
-    RunRoller(-100);//
-    wait(180, msec);
-    MoveEncoderPID(TestPara, 75, 2.2, 0.3, 0, true);
-    RunRoller(0);
-    MoveEncoderPID(TestPara, -75, 6, 0.3, 0, true ); // drive forward to clear ring
-    wait(200, msec);
-    TurnMaxTimePID(TestPara, 110, 0.6, true );        
-    MoveEncoderPID(TestPara, 75, 8.6, 0.5, 110, true);
-   
-    TurnMaxTimePID(TestPara, 60, 0.6, true);
-    MoveEncoderPID(TestPara, 70, 6, 0.5, 60, true);
-    wait(100,msec);
-    RunRoller(-100); //score onto alliance stake
-    wait(1450, msec); //wait for scoring both rings onto alliance stake
-    RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -90, 5, 0.3, 60, true);// delta angle needs to be 58(ik its weird)
-    TurnMaxTimePID(TestPara, -80, .8, true);
-    Tilt.set(true); // down to grab mogo
-
-    MoveEncoderPID(TestPara, 100, 30, 0.5, -80, false);
-    MoveEncoderPID(TestPara, 70,10,0.3,-80,true);
-    MoveEncoderPID(TestPara, 40, 5, 0.3, -80, true); //slow down to grab mogo
-    Clamp.set(true); //close clamp 
-    wait(380,msec);
-    MoveEncoderPID(TestPara, 100, 1.5, 0.4,-80, true); //move back to let goal sit in
-    Tilt.set(false); // tilt mogo
-   // wait(380,msec);
-
-    TurnMaxTimePID(TestPara,106, 0.8,true); 
-    RunRoller(-100); //run intake
-    //wait(380,msec);
-    MoveEncoderPID(TestPara, -100, 28, 0.4, 106, true); //grab ring 2
-    TurnMaxTimePID(TestPara, 140,0.4,true);
-    MoveEncoderPID(TestPara, -85, 16, 0.4, 140, true); //grab ring 3
-    TurnMaxTimePID(TestPara, -50, 0.7, true);
-    MoveEncoderPID(TestPara, -100, 55, 0.1, -50,true);
-    // TurnMaxTimePID(TestPara, -115,0.4,true); 
-    // MoveEncoderPID(TestPara, -100, 13, 0.4, -115, true); //grab ring 4
-    // wait(400,msec);
-    // TurnMaxTimePID(TestPara, -35,0.6,true); //turn to face ladder
-    // MoveEncoderPID(TestPara, -100, 30, 0.4, -35, false); //touch ladder
-   //should be within 15 seconds
-
+    
 
 
 
@@ -83,7 +38,7 @@ void redAWP(){
     RunRoller(0); //run intake
     MoveEncoderPID(TestPara, -40, 4, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
     TurnMaxTimePID(TestPara, 77, 0.8, true);
-    Tilt.set(true); // up to grab mogo
+   // Tilt.set(true); // up to grab mogo
 
     MoveEncoderPID(TestPara, 97.5, 36, 0.5, 77, true);
     MoveEncoderPID(TestPara, 50,15,0.6,77,true);
@@ -91,7 +46,7 @@ void redAWP(){
     Clamp.set(true); //close clamp 
     wait(380,msec);
     MoveEncoderPID(TestPara, 100, 1.5, 0.4, 77, true); //move back to let goal sit in
-    Tilt.set(false); // tilt mogo
+    //Tilt.set(false); // tilt mogo
 
     RunRoller(100);
     TurnMaxTimePID(TestPara,-100, 0.6,true); 
@@ -137,7 +92,7 @@ void redSafeAWP() {
     RunRoller(0); //run intake
     MoveEncoderPID(TestPara, -40, 4, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
     TurnMaxTimePID(TestPara, 77, 0.8, true);
-    Tilt.set(true); // up to grab mogo
+    //Tilt.set(true); // up to grab mogo
 
     MoveEncoderPID(TestPara, 97.5, 36, 0.5, 77, true);
     MoveEncoderPID(TestPara, 50,15,0.6,77,true);
@@ -145,7 +100,7 @@ void redSafeAWP() {
     Clamp.set(true); //close clamp 
     wait(380,msec);
     MoveEncoderPID(TestPara, 100, 1.5, 0.4, 77, true); //move back to let goal sit in
-    Tilt.set(false); // tilt mogo
+   // Tilt.set(false); // tilt mogo
    // wait(380,msec);
     RunRoller(100);
     TurnMaxTimePID(TestPara,-150, 0.6,true); 
@@ -157,6 +112,33 @@ void redSafeAWP() {
     RunRoller(0);
     MoveEncoderPID(TestPara, -100, 23, 0.4, 10, true);                                                                  
 
+
+
+
+
+}
+void redSuperSafe() {
+    PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
+    
+    MoveEncoderPID(TestPara, 80, 32, 0.3,0, true);
+    MoveEncoderPID(TestPara, 40, 4, 0.3, 0, true); //grab mogro
+    Clamp.set(false);
+    wait(30,msec);
+    MoveEncoderPID(TestPara, 40, 6, 0.3, 0, true);
+    Pistake.set(false);
+    //grab first ring
+    RunRoller(-100);
+    TurnMaxTimePID(TestPara, 58, 0.8, true);
+    MoveEncoderPID(TestPara, -80, 35, 0.3,58, true); //pickup first ring
+    TurnMaxTimePID(TestPara, 150, 0.8, true); //approach second ring
+    MoveEncoderPID(TestPara, -70, 15, 0.3,150, true); //pickup second ring
+    MoveEncoderPID(TestPara, 80, 5, 0.3,150, true); //pickup second ring
+    TurnMaxTimePID(TestPara, 180, 0.5, true); //approach third ring
+    MoveEncoderPID(TestPara, -70, 9, 0.3,180, true); //pickup third ring 
+    MoveEncoderPID(TestPara, 70, 12, 0.3,180, true); //approach ladder 
+    TurnMaxTimePID(TestPara, -147, 0.8, true); //turn to face ladder
+    MoveEncoderPID(TestPara, -70, 37, 0.3,-147, true); //touch ladder with flex wheels
+    RunRoller(0);
 
 
 

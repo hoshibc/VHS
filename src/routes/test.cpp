@@ -15,7 +15,7 @@ void test() {
     Clamp.set(true);
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,0, true);
-    Tilt.set(false);
+   // Tilt.set(false);
     MoveEncoderPID(TestPara, 100, 5, 0.4, 0, true);
     TurnMaxTimePID(TestPara, -100, 0.9, true);
     RunRoller(-100);
@@ -55,7 +55,7 @@ void test2(){
     Clamp.set(true);
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,30, true);
-    Tilt.set(false);
+    //Tilt.set(false);
     MoveEncoderPID(TestPara, 100, 3, 0.4,30, true);
     TurnMaxTimePID(TestPara, -84, 0.8, true);
     RunRoller(-100);

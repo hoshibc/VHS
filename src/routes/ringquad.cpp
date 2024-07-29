@@ -19,7 +19,7 @@ void ringquad(){
     Clamp.set(true); //close clamp 
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,30, true); //move back to let goal sit in
-    Tilt.set(false); // tilt mogo
+   // Tilt.set(false); // tilt mogo
     RunRoller(-100); //run intake
     TurnMaxTimePID(TestPara, -125, 0.9, true); //turn to face ring 1
     MoveEncoderPID(TestPara, -100, 23, 0.4, -125, true);
@@ -38,7 +38,7 @@ void ringquad(){
     Pistake.set(true);
     MoveEncoderPID(TestPara, -100, 50, 0.2, 65, true); //drive into ring 4'
     Clamp.set(false);
-    Tilt.set(true);
+   // Tilt.set(true);
     MoveEncoderPID(TestPara, -30, 6, 0.2, 65, true); //drive into ring 4
     Pistake.set(false);
     wait(200,msec);
@@ -68,7 +68,7 @@ void red_ringquad(){
     Clamp.set(true); //close clamp 
     wait(200,msec);
     MoveEncoderPID(TestPara, 100, 0.2, 0.4,-30, true); //move back to let goal sit in
-    Tilt.set(false); // tilt mogo
+  //  Tilt.set(false); // tilt mogo
     RunRoller(-100); //run intake
     TurnMaxTimePID(TestPara, 135, 0.8, true); //turn to face ring 1
     MoveEncoderPID(TestPara, -100, 23, 0.4, 135, true);

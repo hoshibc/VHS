@@ -11,7 +11,7 @@ void RedSafeMogo()
 {
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
     Pistake.set(false); //intake down
-    Tilt.set(false); // ohly tilt 
+    //Tilt.set(false); // ohly tilt 
     RunRoller(-100);//
     wait(200, msec);
     MoveEncoderPID(TestPara, 100, 2.2, 0.3, 0, true);
@@ -28,14 +28,14 @@ void RedSafeMogo()
     RunRoller(0); //run intake
     MoveEncoderPID(TestPara, -100, 2.4, 0.3, 57, true);
     TurnMaxTimePID(TestPara, -88, 0.5, true);
-    Tilt.set(true); // down to grab mogo
+    //Tilt.set(true); // down to grab mogo
 
     MoveEncoderPID(TestPara, 100, 25, 0.3, -88, false);
     MoveEncoderPID(TestPara, 40, 25, 0.3, -88, true); //slow down to grab mogo
     Clamp.set(true); //close clamp 
     wait(400,msec);
     MoveEncoderPID(TestPara, 100, 2, 0.4,-88, true); //move back to let goal sit in
-    Tilt.set(false); // tilt mogo
+    //Tilt.set(false); // tilt mogo
     wait(350,msec);
 
 

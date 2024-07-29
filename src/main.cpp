@@ -39,8 +39,8 @@ void pre_auton(void) {
 
    EXIT=false;
   Pistake.set(true);
-  Tilt.set(false);
-  Clamp.set(false);
+  OPMECH.set(false);
+  Clamp.set(true);
   PX=0;
   JX=0;
   AutoSelectorVal=0;
@@ -284,7 +284,7 @@ if(AutoSelectorVal==2)// Safe awp
 
 if(AutoSelectorVal==3)//Risky
 {
- 
+  redSuperSafe();
   } 
 
 if(AutoSelectorVal==4)// risky AWP
@@ -361,7 +361,7 @@ int PTask(void)
     {
       ButtonPressingX=1;//Button is now pressed
       XTaskActiv=1;//Task is now active
-      Tilt.set(true);
+     // Tilt.set(true);
     }
 
     else if(!Controller1.ButtonX.pressing())ButtonPressingX=0;
@@ -370,7 +370,7 @@ int PTask(void)
     {
       ButtonPressingX=1;//Button is now pressed
       XTaskActiv=0;//Task is now NOT running
-      Tilt.set(false);
+     // Tilt.set(false);
     }
     //----------------------
       //Toggles Clamp

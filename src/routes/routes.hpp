@@ -15,4 +15,5 @@ extern void RedSafeMogo();
 extern void AWP();
 extern void redAWP();
 extern void redSafeAWP();
+extern void redSuperSafe();
 #endif

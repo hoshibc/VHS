@@ -18,19 +18,16 @@ void MogoRushQual() {
     MoveEncoderPID(TestPara, 100, 2 , 0.3, 30, true);
     TurnMaxTimePID(TestPara, 120, 0.5, true);
     
-    Tilt.set(true);
+    
 
     MoveEncoderPID(TestPara, -60, 8.3, 0.4, 120, true);
     //MoveEncoderPID(TestPara, 60, 2, 0.4, 120, true);
     TurnMaxTimePID(TestPara, -20, 0.7, true);
     MoveEncoderPID(TestPara, 100, 27, 0.4, -20, true);
-    MoveEncoderPID(TestPara, 50, 10, 0.4, -20, true);
+    MoveEncoderPID(TestPara, 70, 10, 0.4, -20, true);
 
      //slow down to grab mogo
-    Clamp.set(true); //close clamp 
-    wait(100,msec);
-    Tilt.set(false); // tilt mogo
-    wait(100,msec);
+    Clamp.set(false); //close clamp 
     TurnMaxTimePID(TestPara, -90,  0.6, true);
     Pistake.set(false);
     RunRoller(-100);
@@ -38,8 +35,8 @@ void MogoRushQual() {
     MoveEncoderPID(TestPara, -100, 30, 0.4, -90, true);
     wait(300,msec);
     
-    TurnMaxTimePID(TestPara, 120, 0.9, true);
-    MoveEncoderPID(TestPara, -100, 48, 0.3, 120, true);
+    TurnMaxTimePID(TestPara, 100, 0.9, true);
+    MoveEncoderPID(TestPara, -100, 42, 0.3, 100, true);
 
 }
 
