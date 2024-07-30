@@ -40,7 +40,7 @@ void pre_auton(void) {
    EXIT=false;
   Pistake.set(true);
   OPMECH.set(false);
-  Clamp.set(true);
+  Clamp.set(false);
   PX=0;
   JX=0;
   AutoSelectorVal=0;
