@@ -27,7 +27,7 @@ void redAWP(){
     wait(80, msec);
     TurnMaxTimePID(TestPara, -140, 0.6, true );        
     MoveEncoderPID(TestPara, 60, 11.35, 0.5, -140, true);
-    MoveEncoderPID(TestPara, -50, 1., 0.5, -140, true);
+    MoveEncoderPID(TestPara, -50, 1, 0.5, -140, true);
     TurnMaxTimePID(TestPara, -63, 0.5, true);
     MoveEncoderPID(TestPara, 85, 5.8, 0.5, -63, true);
     MoveEncoderPID(TestPara, 60, 4.2 , 0.3, -63, true);
@@ -35,7 +35,7 @@ void redAWP(){
     RunRoller(-100); //score onto alliance stake
     wait(500, msec); //wait for scoring both rings onto alliance stake
     RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -85, 5.7, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
+    MoveEncoderPID(TestPara, -85, 5.9, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
     TurnMaxTimePID(TestPara, 79, 0.8, true);
     //Tilt.set(true); // up to grab mogo
 
@@ -54,7 +54,7 @@ void redAWP(){
     MoveEncoderPID(TestPara, -100, 16, 0.4, -103, true); //grab ring 2
     MoveEncoderPID(TestPara, -85, 7.6, 0.3, -103, true);
     TurnMaxTimePID(TestPara, -138, 0.4,true);
-    MoveEncoderPID(TestPara, -85, 9, 0.4, -138, true); //grab ring 3
+    MoveEncoderPID(TestPara, -85, 9.3, 0.4, -138, true); //grab ring 3
     TurnMaxTimePID(TestPara, -153, 0.3, true);
     MoveEncoderPID(TestPara, -85, 3, 0.3, -153, true);
 
@@ -91,7 +91,7 @@ void redSafeAWP() {
     MoveEncoderPID(TestPara, -40, 1.2, 0.5, -140, true);
     TurnMaxTimePID(TestPara, -63, 0.8, true);
     MoveEncoderPID(TestPara, 70, 5.8, 0.5, -63, true);
-    MoveEncoderPID(TestPara, 40, 3.2 , 0.3, -64, true);
+    MoveEncoderPID(TestPara, 40, 3.2 , 0.3, -63, true);
     wait(100,msec);
     RunRoller(-100); //score onto alliance stake
     wait(600, msec); //wait for scoring both rings onto alliance stake
@@ -116,7 +116,7 @@ void redSafeAWP() {
     TurnMaxTimePID(TestPara, 10, 0.8, true);
     MoveEncoderPID(TestPara, -100 ,15 , 0.3, 10, true);  
     RunRoller(0);
-    MoveEncoderPID(TestPara, -100, 26, 0.4, 10, true);                                                                  
+    MoveEncoderPID(TestPara, -100, 26, 0.4, -2, true);                                                                  
 
 
 
