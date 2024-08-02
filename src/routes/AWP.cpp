@@ -26,8 +26,8 @@ void redAWP(){
     MoveEncoderPID(TestPara, -85, 6, 0.3, 0, true ); // drive forward to clear ring
     wait(80, msec);
     TurnMaxTimePID(TestPara, -140, 0.6, true );        
-    MoveEncoderPID(TestPara, 60, 11.35, 0.5, -140, true);
-    MoveEncoderPID(TestPara, -50, 1, 0.5, -140, true);
+    MoveEncoderPID(TestPara, 55, 11.39, 0.5, -140, true);
+    MoveEncoderPID(TestPara, -50, .4, 0.5, -140, true);
     TurnMaxTimePID(TestPara, -63, 0.5, true);
     MoveEncoderPID(TestPara, 85, 5.8, 0.5, -63, true);
     MoveEncoderPID(TestPara, 60, 4.2 , 0.3, -63, true);
@@ -56,6 +56,7 @@ void redAWP(){
     TurnMaxTimePID(TestPara, -138, 0.4,true);
     MoveEncoderPID(TestPara, -85, 9.3, 0.4, -138, true); //grab ring 3
     TurnMaxTimePID(TestPara, -153, 0.3, true);
+    RunRoller(0);
     MoveEncoderPID(TestPara, -85, 3, 0.3, -153, true);
 
     /*0 this below is slow accurate 5th ring
@@ -64,6 +65,7 @@ void redAWP(){
     TurnMaxTimePID(TestPara, 10, 0.5, true);
     MoveEncoderPID(TestPara, -100, 39, 0.3,10, true);
     */
+    RunRoller(-100);
     MoveEncoderPID(TestPara, -100, 37, 0.3, 60, true);
     
     MoveEncoderPID(TestPara, -100, 50, 0.3,15, true);
@@ -77,35 +79,35 @@ void redAWP(){
 }
 
 void redSafeAWP() {
-    PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
+   PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
     Pistake.set(false); //intake down
     
     RunRoller(-100);//
     wait(180, msec);
-    MoveEncoderPID(TestPara, 75, 2.2, 0.3, 0, true);
+    MoveEncoderPID(TestPara, 85, 2.2, 0.3, 0, true);
     RunRoller(0);
-    MoveEncoderPID(TestPara, -75, 6, 0.3, 0, true ); // drive forward to clear ring
-    wait(200, msec);
-    TurnMaxTimePID(TestPara, -140, 0.8, true );        
-    MoveEncoderPID(TestPara, 50, 11, 0.5, -140, true);
-    MoveEncoderPID(TestPara, -40, 1.2, 0.5, -140, true);
-    TurnMaxTimePID(TestPara, -63, 0.8, true);
-    MoveEncoderPID(TestPara, 70, 5.8, 0.5, -63, true);
-    MoveEncoderPID(TestPara, 40, 3.2 , 0.3, -63, true);
-    wait(100,msec);
+    MoveEncoderPID(TestPara, -85, 6, 0.3, 0, true ); // drive forward to clear ring
+    wait(80, msec);
+    TurnMaxTimePID(TestPara, -140, 0.6, true );        
+    MoveEncoderPID(TestPara, 55, 11.39, 0.5, -140, true);
+    MoveEncoderPID(TestPara, -50, .4, 0.5, -140, true);
+    TurnMaxTimePID(TestPara, -63, 0.5, true);
+    MoveEncoderPID(TestPara, 85, 5.8, 0.5, -63, true);
+    MoveEncoderPID(TestPara, 60, 4.2 , 0.3, -63, true);
+    
     RunRoller(-100); //score onto alliance stake
-    wait(600, msec); //wait for scoring both rings onto alliance stake
+    wait(500, msec); //wait for scoring both rings onto alliance stake
     RunRoller(0); //run intake
-    MoveEncoderPID(TestPara, -100, 4.2, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
-    TurnMaxTimePID(TestPara, 74, 0.8, true);
+    MoveEncoderPID(TestPara, -85, 5.9, 0.7, -63, true);// delta angle needs to be 58(ik its weird)
+    TurnMaxTimePID(TestPara, 79, 0.8, true);
     //Tilt.set(true); // up to grab mogo
 
-    MoveEncoderPID(TestPara, 100, 42, 0.5, 74, true);
-    MoveEncoderPID(TestPara, 85,8,0.6,74,true);
+    MoveEncoderPID(TestPara, 100, 42, 0.5, 79, true);
+    MoveEncoderPID(TestPara, 85,4,0.6,79,false);
      //slow down to grab mogo
     Clamp.set(true); //close clamp 
-    wait(380,msec);
-    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 74, true); //move back to let goal sit in
+   
+    MoveEncoderPID(TestPara, 100, 1.5, 0.4, 79, true);
    // Tilt.set(false); // tilt mogo
    // wait(380,msec);
     RunRoller(100);
