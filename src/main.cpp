@@ -373,6 +373,7 @@ int ATask(void)
         //cout << "FSFSFSFSFS" <<endl;
       if (!Check){
         //cout << "first one passed" << endl;
+        cout<<counter<<endl;
 
         if (hue >= 200 && hue <= 270 && !discDetected) { //Within Blue Range and Disk is first seen
             discDetected = true;
@@ -382,22 +383,28 @@ int ATask(void)
             Brain.Screen.setCursor(5,10);
             Brain.Screen.print("Running");
           }
-      }
+      
 
-      if (discDetected) {//counter < 10000
-           counter += 20;
-           if (false) {
-            //discDetected = false;
+        if (discDetected && counter <= 3000) {//counter < 10000
+           counter += 10;
+           RunRoller(-100);
+           cout<<"gay"<<endl;
+        if (counter>=3000) {
+            discDetected = false;
             counter = 0;
-            RunRoller(0);
+            //RunRoller(0);
+            cout<<"notgay"<<endl;
            }
       }
-      else {
+        else if(!(hue >=200&& hue<=270)&&!discDetected) {
+          cout<<"a"<<endl;
         pow = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); 
         RunRoller(-pow);
       }
         
-
+      }
+      else {pow = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); 
+        RunRoller(-pow);}
       // Calculate lift power first, based on button presses
         powl = ((Controller1.ButtonL2.pressing() - Controller1.ButtonL1.pressing()) * 100); 
         RunLift(-powl);
