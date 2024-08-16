@@ -339,28 +339,27 @@ int ATask(void)
   OpSens.integrationTime(5);
   OpSens.setLightPower(100,percent);
   double powl; //powl is the power for lift
-  bool question = false;
+  //bool question = false;
+  double hue;
   
-  while(true) {
-  
-  if (!(OpSens.hue() <= 270) || !(OpSens.hue() >= 200)) {
-      cout<<"no";
-      question = true;
-      pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
-      RunRoller(-pow);
-      powl=((Controller1.ButtonL2.pressing()-Controller1.ButtonL1.pressing())*100);// calculate the power based on the two values given when buttons are pressed
-      RunLift(-powl);
-    
-    }
-    
+    while (true) {
+        // Calculate intake power first, based on button presses
+        pow = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); 
+        RunRoller(-pow);
 
-  
-	// Check if the object that it sees is green
-	if ((OpSens.hue() <= 270 || OpSens.hue() >= 200 || question == true)==true) {
-		  RunRoller(-100);
-      question = false;
-		  
-	  }
+        // Calculate lift power first, based on button presses
+        powl = ((Controller1.ButtonL2.pressing() - Controller1.ButtonL1.pressing()) * 100); 
+        RunLift(-powl);
+
+        hue = OpSens.hue();
+
+        // Check if hue is within blue range
+        if (hue >= 200 && hue <= 270) { 
+            RunRoller(-100); // Run roller the other way to redirect
+        } 
+        else { 
+            continue;
+        }
 
   //RunPuncher((Controller1.ButtonB.pressing())*100);
   
