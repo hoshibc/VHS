@@ -111,7 +111,12 @@ void RunRoller(int val)
 Roller.setMaxTorque(100,percent);
 Roller.spin(forward,(double)val/100.0*12,volt);
 }
+void RunLift(int val)
+{
+lift.setMaxTorque(100,percent);
+lift.spin(forward,(double)val/100.0*12,volt);
 
+}
 int PrevE;//Error at t-1
 
 /** Moves the robot forward or backward. Negative speed moves

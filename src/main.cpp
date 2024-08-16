@@ -13,9 +13,9 @@
 #include "screen_gui.hpp"
 #include "movement.hpp"
 #include "routes/routes.hpp"
-
+#include <iostream>
 using namespace vex;
-
+using namespace std;
 // A global instance of competition
 competition Competition;
 
@@ -36,7 +36,7 @@ bool SP;
 bool EXIT;
 void pre_auton(void) {
   Inversion_Constant=1;
-
+  lift.setStopping(brake);
    EXIT=false;
   Pistake.set(true);
   OPMECH.set(false);
@@ -307,7 +307,7 @@ MoveEncoderPID(TestPara, -100, 28, 0.4, -106, true); //grab ring 2
 
 
 if(AutoSelectorVal==7)//DO NOT USE SLOT 7 RESERVED FOR TURN INVERSION
-{ 
+{   
  
 
 }
@@ -336,17 +336,40 @@ int V;
 int ATask(void)
 {
   double pow;
-    while(true)
-  {
-    pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
-    RunRoller(-pow);
-    
+  OpSens.integrationTime(5);
+  OpSens.setLightPower(100,percent);
+  double powl; //powl is the power for lift
+  bool question = false;
   
+  while(true) {
+  
+  if (!(OpSens.hue() <= 270) || !(OpSens.hue() >= 200)) {
+      cout<<"no";
+      question = true;
+      pow=((Controller1.ButtonR2.pressing()-Controller1.ButtonR1.pressing())*100);//Calculate intake power, if button pressed, button.pressing returns 1
+      RunRoller(-pow);
+      powl=((Controller1.ButtonL2.pressing()-Controller1.ButtonL1.pressing())*100);// calculate the power based on the two values given when buttons are pressed
+      RunLift(-powl);
+    
+    }
+    
+
+  
+	// Check if the object that it sees is green
+	if ((OpSens.hue() <= 270 || OpSens.hue() >= 200 || question == true)==true) {
+		  RunRoller(-100);
+      question = false;
+		  
+	  }
+
   //RunPuncher((Controller1.ButtonB.pressing())*100);
-  }
+  
   
   return 0;
+  }
 }
+
+
 
 int ButtonPressingX,XTaskActiv;
 int ButtonPressingY,YTaskActiv;
@@ -449,7 +472,7 @@ void usercontrol(void) {
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
     
-     
+    
     
     task Dtask=task(DriveTask);
     task Atask=task(ATask);

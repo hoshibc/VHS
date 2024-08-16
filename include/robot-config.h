@@ -19,8 +19,10 @@ extern motor PU;
 extern inertial Gyro;
 extern digital_out LeftBackWing;
 extern digital_out OPMECH;
+extern motor lift;
 extern const double wheelDiam;
 extern const double wheelToMotorRatio;
+extern optical OpSens;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

@@ -17,6 +17,10 @@ motor LB = motor(PORT13, ratio6_1, true);
 motor RB = motor(PORT20, ratio6_1, false);
 motor In1 = motor(PORT21, ratio6_1, false);
 motor In2 = motor(PORT10, ratio6_1, true);
+motor lift= motor(PORT9, ratio36_1, true);
+optical OpSens = optical(PORT1);
+
+//define lift to brake when stopped
 
 //Motor Groups
 motor_group Roller = motor_group(In1,In2);
