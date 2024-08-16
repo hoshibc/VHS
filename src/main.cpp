@@ -333,9 +333,14 @@ int DriveTask(void){
 return 0;
 }
 int V;
+int ButtonPressingB=0,BTaskActiv=0;
+bool Check = false;
+bool discDetected = false;
+  unsigned counter = 0;
 int ATask(void)
 {
   double pow;
+  
   OpSens.integrationTime(5);
   OpSens.setLightPower(100,percent);
   double powl; //powl is the power for lift
@@ -343,30 +348,70 @@ int ATask(void)
   double hue;
   
     while (true) {
+      hue = OpSens.hue();
+
+      if(BTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)//Finding if ButtonX is pressing and if it was held down before.
+      { 
+        Check = false;
+        ButtonPressingB=1;//Button is now pressed
+        BTaskActiv=1;//Task is now active
+      // Tilt.set(true);
+      }
+
+      else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
+
+      else if(BTaskActiv==1&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)//Finding if task is active and if ButtonX wasn't pressed before
+      { Check=true;
+        ButtonPressingB=1;//Button is now pressed
+        BTaskActiv=0;//Task is now NOT running
+      // Tilt.set(false);
+      }
+      
         // Calculate intake power first, based on button presses
+        
+        // Check if hue is within blue range
+        //cout << "FSFSFSFSFS" <<endl;
+      if (!Check){
+        //cout << "first one passed" << endl;
+
+        if (hue >= 200 && hue <= 270 && !discDetected) { //Within Blue Range and Disk is first seen
+            discDetected = true;
+            RunRoller(-100);
+            //cout << "hi" << endl;
+            Brain.Screen.setPenColor("#f8b195");
+            Brain.Screen.setCursor(5,10);
+            Brain.Screen.print("Running");
+          }
+      }
+
+      if (discDetected) {//counter < 10000
+           counter += 20;
+           if (false) {
+            //discDetected = false;
+            counter = 0;
+            RunRoller(0);
+           }
+      }
+      else {
         pow = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); 
         RunRoller(-pow);
+      }
+        
 
-        // Calculate lift power first, based on button presses
+      // Calculate lift power first, based on button presses
         powl = ((Controller1.ButtonL2.pressing() - Controller1.ButtonL1.pressing()) * 100); 
         RunLift(-powl);
 
-        hue = OpSens.hue();
-
-        // Check if hue is within blue range
-        if (hue >= 200 && hue <= 270) { 
-            RunRoller(-100); // Run roller the other way to redirect
-        } 
-        else { 
-            continue;
         }
-
+        
+        
   //RunPuncher((Controller1.ButtonB.pressing())*100);
-  
+
   
   return 0;
   }
-}
+
+
 
 
 
