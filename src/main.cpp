@@ -337,6 +337,12 @@ int ButtonPressingB=0,BTaskActiv=0;
 bool Check = false;
 bool discDetected = false;
   unsigned counter = 0;
+bool rightcolor;
+bool waiting = false;
+int rollerStopTime = 500; // Time to stop in milliseconds
+int delayStartTime = 0;
+bool rollerSpinning =false;
+vex::timer Timer;
 int ATask(void)
 {
   double pow;
@@ -348,76 +354,105 @@ int ATask(void)
   double hue;
   
     while (true) {
-      hue = OpSens.hue();
+    hue = OpSens.hue();
 
-      if(BTaskActiv==0&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)//Finding if ButtonX is pressing and if it was held down before.
-      { 
+    // Handle Button B press and task activation/deactivation
+    if (BTaskActiv == 0 && Controller1.ButtonB.pressing() && ButtonPressingB == 0) {
         Check = false;
-        ButtonPressingB=1;//Button is now pressed
-        BTaskActiv=1;//Task is now active
-      // Tilt.set(true);
-      }
+        ButtonPressingB = 1;  // Button is now pressed
+        BTaskActiv = 1;        // Task is now active
+    } 
+    else if (!Controller1.ButtonB.pressing()) {
+        ButtonPressingB = 0;
+    } 
+    else if (BTaskActiv == 1 && Controller1.ButtonB.pressing() && ButtonPressingB == 0) {
+        Check = true;
+        ButtonPressingB = 1;   // Button is now pressed
+        BTaskActiv = 0;        // Task is now inactive
+    }
 
-      else if(!Controller1.ButtonB.pressing())ButtonPressingB=0;
 
-      else if(BTaskActiv==1&&Controller1.ButtonB.pressing()&&ButtonPressingB==0)//Finding if task is active and if ButtonX wasn't pressed before
-      { Check=true;
-        ButtonPressingB=1;//Button is now pressed
-        BTaskActiv=0;//Task is now NOT running
-      // Tilt.set(false);
-      }
-      
-        // Calculate intake power first, based on button presses
-        
-        // Check if hue is within blue range
-        //cout << "FSFSFSFSFS" <<endl;
-      if (!Check){
-        //cout << "first one passed" << endl;
-        cout<<counter<<endl;
-
-        if (hue >= 200 && hue <= 270 && !discDetected) { //Within Blue Range and Disk is first seen
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    if (hue >= 200 && hue <= 270 && !discDetected) {
             discDetected = true;
-            RunRoller(-100);
-            //cout << "hi" << endl;
-            Brain.Screen.setPenColor("#f8b195");
-            Brain.Screen.setCursor(5,10);
-            Brain.Screen.print("Running");
-          }
-      
-
-        if (discDetected && counter <= 3000) {//counter < 10000
-           counter += 10;
-           RunRoller(-100);
-           cout<<"gay"<<endl;
-        if (counter>=3000) {
-            discDetected = false;
-            counter = 0;
-            //RunRoller(0);
-            cout<<"notgay"<<endl;
-           }
-      }
-        else if(!(hue >=200&& hue<=270)&&!discDetected) {
-          cout<<"a"<<endl;
-        pow = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); 
-        RunRoller(-pow);
-      }
-        
-      }
-      else {pow = ((Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100); 
-        RunRoller(-pow);}
-      // Calculate lift power first, based on button presses
-        powl = ((Controller1.ButtonL2.pressing() - Controller1.ButtonL1.pressing()) * 100); 
-        RunLift(-powl);
-
+            rightcolor =true;
+            
+            
+            Roller.resetPosition();
         }
+    else if(hue >= 350 && hue<=10 && !discDetected){
+
+        discDetected = true;
+        rightcolor =false;
+        rollerSpinning = true;
+        Roller.resetPosition();
+
+    }
+    // Control roller based on hue detection and button presses
+    if (!Check) {
+      cout<<Roller.position(degrees)<<endl;
+        
+
+        if (discDetected&&rightcolor) {
+            if (Roller.position(degrees) >= -1300) {
+                RunRoller(-100);
+            } else {
+                discDetected = false;
+                
+            }
+        } 
+        else if (!discDetected) {
+            
+            pow = (Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100;
+            RunRoller(-pow);
+        }
+    } 
+    else {
+        pow = (Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100;
+        RunRoller(-pow);
+    }/*
+    if (rollerSpinning) {
+      if(!rightcolor){
+        if (Roller.position(degrees) > 792) {  // Approximately 2.2 rotations (360 * 2.2 = 792 degrees)
+              RunRoller(0);  // Stop the roller
+                // Stop spinning
+              rollerSpinning=false;
+              waiting = true;  // Start waiting
+              Timer.clear();
+              delayStartTime = Timer.time(); // Record the current time
+          }
+      }
+    }
+
+    // Handle the non-blocking wait outside the main if-check loop
+    if (waiting) {
+      cout<<"a"<<endl;
+      cout<<delayStartTime<<endl;
+      
+        // Check if the delay time has passed
+        if (delayStartTime>= rollerStopTime) {
+            waiting = false;  // Stop waiting
+            discDetected = false;  // Reset disc detection
+            RunRoller(-100);  // Start the roller again
+            rightcolor= true;
+            Roller.resetPosition();  // Reset the roller's position after restarting
+        }
+      
+    }*/
+    powl = (Controller1.ButtonL2.pressing() - Controller1.ButtonL1.pressing()) * 100;
+    RunLift(-powl);
+    }
+
+    // Control lift power based on button presses
+    return 0;
+    
+}
         
         
   //RunPuncher((Controller1.ButtonB.pressing())*100);
 
   
-  return 0;
-  }
-
+  
 
 
 
