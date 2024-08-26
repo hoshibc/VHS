@@ -37,9 +37,8 @@ bool EXIT;
 void pre_auton(void) {
   Inversion_Constant=1;
   lift.setStopping(brake);
-   EXIT=false;
+  EXIT=false;
   Pistake.set(true);
-  OPMECH.set(false);
   Clamp.set(false);
   PX=0;
   JX=0;
@@ -48,7 +47,7 @@ void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   wait(1000,msec);
   vexcodeInit();
-Gyro.calibrate();
+  Gyro.calibrate();
 
 //Ensure Robot Launch Position is set before auto proceeds, once plugged into field control,
 //start program and do not temper bot under all circumstances
@@ -321,22 +320,21 @@ CStop();
 }
 int RV;
 int LV;
-int DriveTask(void){
-  while(true)
-  {
+int DriveTask(void) {
+  while(true) {
     EXIT=true;
-    RV=-Controller1.Axis3.position(percent)-Controller1.Axis1.position(percent);
-    LV=-Controller1.Axis3.position(percent)+Controller1.Axis1.position(percent);
+    RV=Controller1.Axis3.position(percent)-Controller1.Axis1.position(percent);
+    LV=Controller1.Axis3.position(percent)+Controller1.Axis1.position(percent);
     Move(LV,RV);
   }
 
-return 0;
+  return 0;
 }
 int V;
 int ButtonPressingB=0,BTaskActiv=0;
 bool Check = false;
 bool discDetected = false;
-  unsigned counter = 0;
+unsigned counter = 0;
 bool rightcolor;
 bool waiting = false;
 int rollerStopTime = 500; // Time to stop in milliseconds
@@ -345,107 +343,84 @@ bool rollerSpinning =false;
 vex::timer Timer;
 int ATask(void)
 {
+
   double pow;
-  
   OpSens.integrationTime(5);
   OpSens.setLightPower(100,percent);
   double powl; //powl is the power for lift
-  //bool question = false;
   double hue;
-  
-    while (true) {
-    hue = OpSens.hue();
 
-    // Handle Button B press and task activation/deactivation
-    if (BTaskActiv == 0 && Controller1.ButtonB.pressing() && ButtonPressingB == 0) {
+  while (true) 
+  {
+      hue = OpSens.hue();
+
+      // Handle Button B press and task activation/deactivation
+      if (BTaskActiv == 0 && Controller1.ButtonB.pressing() && ButtonPressingB == 0) 
+      {
         Check = false;
         ButtonPressingB = 1;  // Button is now pressed
         BTaskActiv = 1;        // Task is now active
-    } 
-    else if (!Controller1.ButtonB.pressing()) {
+      } 
+
+      else if (!Controller1.ButtonB.pressing()) 
+      {
         ButtonPressingB = 0;
-    } 
-    else if (BTaskActiv == 1 && Controller1.ButtonB.pressing() && ButtonPressingB == 0) {
+      } 
+
+      else if (BTaskActiv == 1 && Controller1.ButtonB.pressing() && ButtonPressingB == 0) 
+      {
         Check = true;
         ButtonPressingB = 1;   // Button is now pressed
         BTaskActiv = 0;        // Task is now inactive
-    }
+      }
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    if (hue >= 200 && hue <= 270 && !discDetected) {
-            discDetected = true;
-            rightcolor =true;
-            
-            
-            Roller.resetPosition();
-        }
-    else if(hue >= 350 && hue<=10 && !discDetected){
-
+      ////////////////////////////////////////////////////////////////////////////////////////////////
+      if (hue >= 200 && hue <= 270 && !discDetected) 
+      {
         discDetected = true;
-        rightcolor =false;
-        rollerSpinning = true;
+        rightcolor =true;
         Roller.resetPosition();
+      }
+      else if(hue >= 350 && hue<=10 && !discDetected){
 
-    }
-    // Control roller based on hue detection and button presses
-    if (!Check) {
-      cout<<Roller.position(degrees)<<endl;
+          discDetected = true;
+          rightcolor =false;
+          rollerSpinning = true;
+          Roller.resetPosition();
+
+      }
+      // Control roller based on hue detection and button presses
+      if (!Check) {
+        cout<<Roller.position(degrees)<<endl;
+          
+
+          if (discDetected&&rightcolor) {
+              if (Roller.position(degrees) >= -1300) {
+                  RunRoller(-100);
+              } 
+              else {
+                  discDetected = false;
+                  
+              }
+          } 
+          else if (!discDetected) 
+          {
         
-
-        if (discDetected&&rightcolor) {
-            if (Roller.position(degrees) >= -1300) {
-                RunRoller(-100);
-            } else {
-                discDetected = false;
-                
-            }
-        } 
-        else if (!discDetected) {
-            
             pow = (Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100;
             RunRoller(-pow);
-        }
-    } 
+          }
+      } 
     else {
         pow = (Controller1.ButtonR2.pressing() - Controller1.ButtonR1.pressing()) * 100;
         RunRoller(-pow);
-    }/*
-    if (rollerSpinning) {
-      if(!rightcolor){
-        if (Roller.position(degrees) > 792) {  // Approximately 2.2 rotations (360 * 2.2 = 792 degrees)
-              RunRoller(0);  // Stop the roller
-                // Stop spinning
-              rollerSpinning=false;
-              waiting = true;  // Start waiting
-              Timer.clear();
-              delayStartTime = Timer.time(); // Record the current time
-          }
-      }
     }
-
-    // Handle the non-blocking wait outside the main if-check loop
-    if (waiting) {
-      cout<<"a"<<endl;
-      cout<<delayStartTime<<endl;
-      
-        // Check if the delay time has passed
-        if (delayStartTime>= rollerStopTime) {
-            waiting = false;  // Stop waiting
-            discDetected = false;  // Reset disc detection
-            RunRoller(-100);  // Start the roller again
-            rightcolor= true;
-            Roller.resetPosition();  // Reset the roller's position after restarting
-        }
-      
-    }*/
     powl = (Controller1.ButtonL2.pressing() - Controller1.ButtonL1.pressing()) * 100;
     RunLift(-powl);
-    }
+  }
 
-    // Control lift power based on button presses
-    return 0;
-    
+  // Control lift power based on button presses
+  return 0; 
 }
         
         
@@ -482,7 +457,7 @@ int PTask(void)
      // Tilt.set(false);
     }
     //----------------------
-      //Toggles Clamp
+    //Toggles Clamp
     if(YTaskActiv==0&&Controller1.ButtonY.pressing()&&ButtonPressingY==0)//Finding if ButtonY is pressing and if it was held down before.
     {
       ButtonPressingY=1;//Button is now pressed
@@ -504,7 +479,6 @@ int PTask(void)
     {
       ButtonPressingU=1;
       UTaskActiv=1;
-      OPMECH.set(true);
     }
     else if(!Controller1.ButtonUp.pressing())ButtonPressingU=0;
 
@@ -513,7 +487,6 @@ int PTask(void)
     {
       ButtonPressingU=1;
       UTaskActiv=0;
-      OPMECH.set(false);
       
     }
   

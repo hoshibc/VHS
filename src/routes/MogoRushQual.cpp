@@ -9,12 +9,10 @@
 void MogoRushQual() {
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
     MoveEncoderPID(TestPara, 100, 50,0.4, -4, true);//Grab mogo rush angled
-    OPMECH.set(true);
     MoveEncoderPID(TestPara, 100, 4, 0.4, 0, true);
     MoveEncoderPID(TestPara, -100, 25, 0.4, 0, true );
     TurnMaxTimePID(TestPara, 30, 0.5, true);
     MoveEncoderPID(TestPara,-100,  38, 0.4, 30, true);
-    OPMECH.set(false);
     MoveEncoderPID(TestPara, 100, 2 , 0.3, 30, true);
     TurnMaxTimePID(TestPara, 120, 0.5, true);
     
