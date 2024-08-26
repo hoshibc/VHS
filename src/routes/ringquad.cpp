@@ -6,7 +6,7 @@
 // TurnMaxTimePID(TestPara, Desired Heading -180 to 180, time out to calculate turn, Braking?)
 // MoveTimePID(TestPara, motor speed, time traveled (sec), time to full speed, heading, false);
 
-void ringquad(){
+void ringquad() {
     //version number 1.0 draft route
     //issues: intake range, time to end
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
@@ -35,12 +35,12 @@ void ringquad(){
     TurnMaxTimePID(TestPara, 65, 0.8, true);
     
     
-    Pistake.set(true);
+    intakePiston.set(true);
     MoveEncoderPID(TestPara, -100, 50, 0.2, 65, true); //drive into ring 4'
     Clamp.set(false);
    // Tilt.set(true);
     MoveEncoderPID(TestPara, -30, 6, 0.2, 65, true); //drive into ring 4
-    Pistake.set(false);
+    intakePiston.set(false);
     wait(200,msec);
     RunRoller(0);
     MoveEncoderPID(TestPara, 70, 15, 0.4, 65,true);
@@ -82,10 +82,10 @@ void red_ringquad(){
     //TurnMaxTimePID(TestPara, -90, 0.4, true);  //turn to face ring 3
    // MoveEncoderPID(TestPara, -100, 18, 0.4, -90, true); //drive into ring 3
     TurnMaxTimePID(TestPara, -78, 0.8, true);
-    Pistake.set(true);
+    intakePiston.set(true);
     MoveEncoderPID(TestPara, -100, 50, 0.2, -78, true); //drive into ring 4
     MoveEncoderPID(TestPara, -30, 6, 0.2, -78, true); //drive into ring 4
-    Pistake.set(false);
+    intakePiston.set(false);
     wait(400,msec);
     MoveEncoderPID(TestPara, 70, 15, 0.4, -78,true);
     TurnMaxTimePID(TestPara, -140, 0.8, true);

@@ -10,7 +10,7 @@
 void RedSafeMogo()
 {
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
-    Pistake.set(false); //intake down
+    intakePiston.set(false); //intake down
     //Tilt.set(false); // ohly tilt 
     RunRoller(-100);//
     wait(200, msec);

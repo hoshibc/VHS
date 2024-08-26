@@ -17,7 +17,7 @@ void AWP(){
 
 void redAWP(){
     PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
-    Pistake.set(false); //intake down
+    intakePiston.set(false); //intake down
     
     RunRoller(-100);//
     wait(180, msec);
@@ -86,7 +86,7 @@ void redAWP(){
 
 void redSafeAWP() {
    PIDDataSet TestPara={1.5,0.1,0.15}; //initialize
-    Pistake.set(false); //intake down
+    intakePiston.set(false); //intake down
     
     RunRoller(-100);//
     wait(180, msec);
@@ -140,7 +140,7 @@ void redSuperSafe() {
     Clamp.set(true);
     wait(30,msec);
     MoveEncoderPID(TestPara, 40, 6, 0.3, 0, true);
-    Pistake.set(false);
+    intakePiston.set(false);
     //grab first ring
     RunRoller(-100);
     TurnMaxTimePID(TestPara, 58, 0.8, true);

@@ -22,9 +22,9 @@ void test() {
     //wait(1000,msec);
     MoveEncoderPID(TestPara, -100, 24, 0.5, -100, true);
     TurnMaxTimePID(TestPara, 40, 0.9, true);
-    Pistake.set(true);
+    intakePiston.set(true);
     MoveEncoderPID(TestPara, -100, 60, 0.4, 40, true);
-    Pistake.set(false);
+    intakePiston.set(false);
     /*MoveEncoderPID(TestPara, 100 , 65 ,0.4,0,true);
     TurnMaxTimePID(TestPara, 90, 0.4, true);
     MoveEncoderPID(TestPara, 100 , 50 ,0.4,90,true);
@@ -62,9 +62,9 @@ void test2(){
     MoveEncoderPID(TestPara, -100, 25, 0.4,-84, true);
     TurnMaxTimePID(TestPara,63, 0.5, true);
     wait(500,msec);
-    Pistake.set(true);
+    intakePiston.set(true);
     MoveEncoderPID(TestPara, -100, 70, 0.4, 63, true);
-    Pistake.set(false);
+    intakePiston.set(false);
     
     MoveEncoderPID(TestPara, 100, 10, 0.4, 70, true);
     TurnMaxTimePID(TestPara, -12, 0.9, true);

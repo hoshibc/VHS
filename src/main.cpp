@@ -38,7 +38,7 @@ void pre_auton(void) {
   Inversion_Constant=1;
   lift.setStopping(brake);
   EXIT=false;
-  Pistake.set(true);
+  intakePiston.set(true);
   Clamp.set(false);
   PX=0;
   JX=0;
@@ -474,7 +474,7 @@ int PTask(void)
       Clamp.set(false);
     }
 
-    //Toggles Pistake(The piston on the intake)
+    //Toggles intakePiston(The piston on the intake)
     if(UTaskActiv==0&&Controller1.ButtonUp.pressing()&&ButtonPressingU==0)
     {
       ButtonPressingU=1;
@@ -495,7 +495,7 @@ int PTask(void)
     {
       ButtonPressingA=1;
       ATaskActiv=1;
-      Pistake.set(true);
+      intakePiston.set(true);
     }
     else if(!Controller1.ButtonA.pressing())ButtonPressingA=0;
 
@@ -504,7 +504,7 @@ int PTask(void)
     {
       ButtonPressingA=1;
       ATaskActiv=0;
-      Pistake.set(false);
+      intakePiston.set(false);
       
     }
     }
