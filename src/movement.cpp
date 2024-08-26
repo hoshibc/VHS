@@ -25,23 +25,22 @@ int JX;
  * @param dist the 
  * @param HDG the
  */
-void Zeroing(bool dist, bool HDG)
-{
-  if(dist){
-  LF.resetPosition();
-  LM.resetPosition();
-  LB.resetPosition();
-  RF.resetPosition();
-  RM.resetPosition();
-  RB.resetPosition();
+void Zeroing(bool dist, bool HDG) {
+  if (dist) {
+    LF.resetPosition();
+    LM.resetPosition();
+    LB.resetPosition();
+    RF.resetPosition();
+    RM.resetPosition();
+    RB.resetPosition();
   }
-  if(HDG){
+
+  if (HDG) {
     Gyro.setHeading(0,degrees);
   }
 }
 
-ChassisDataSet ChassisUpdate()
-{
+ChassisDataSet ChassisUpdate() {
   ChassisDataSet CDS;
   CDS.Left=get_dist_travelled((LF.position(degrees)+LM.position(degrees)+LB.position(degrees))/3.0);
   CDS.Right=get_dist_travelled((RF.position(degrees)+RM.position(degrees)+RB.position(degrees))/3.0);
@@ -52,71 +51,72 @@ ChassisDataSet ChassisUpdate()
   return CDS;
 }
 
-void Move(int left, int right)
-{
-LF.setMaxTorque(100,percent);
-LM.setMaxTorque(100,percent);
-LB.setMaxTorque(100,percent);
-RF.setMaxTorque(100,percent);
-RM.setMaxTorque(100,percent);
-RB.setMaxTorque(100,percent);
+//Movement function for the drivetrain motors
+void Move(int left, int right) {
+  LF.setMaxTorque(100, percent);
+  LM.setMaxTorque(100, percent);
+  LB.setMaxTorque(100, percent);
+  RF.setMaxTorque(100, percent);
+  RM.setMaxTorque(100, percent);
+  RB.setMaxTorque(100, percent);
 
-LF.spin(forward,(double)left/100.0*11,volt);
-LM.spin(forward,(double)left/100.0*11,volt);
-LB.spin(forward,(double)left/100.0*11,volt);
-RF.spin(forward,(double)right/100.0*11,volt);
-RM.spin(forward,(double)right/100.0*11,volt);
-RB.spin(forward,(double)right/100.0*11,volt);
+  LF.spin(forward,(double)left/100.0*11,volt);
+  LM.spin(forward,(double)left/100.0*11,volt);
+  LB.spin(forward,(double)left/100.0*11,volt);
+  RF.spin(forward,(double)right/100.0*11,volt);
+  RM.spin(forward,(double)right/100.0*11,volt);
+  RB.spin(forward,(double)right/100.0*11,volt);
 }
 
-void BStop()
-{
-LF.setStopping(brake);
-LM.setStopping(brake);
-LB.setStopping(brake);
-RF.setStopping(brake);
-RM.setStopping(brake);
-RB.setStopping(brake);
+//Brake stop function for the drivetrain motors
+void BStop() {
+  LF.setStopping(brake);
+  LM.setStopping(brake);
+  LB.setStopping(brake);
+  RF.setStopping(brake);
+  RM.setStopping(brake);
+  RB.setStopping(brake);
 
-LF.stop();
-LM.stop();
-LB.stop();
-RF.stop();
-RM.stop();
-RB.stop();
+  LF.stop();
+  LM.stop();
+  LB.stop();
+  RF.stop();
+  RM.stop();
+  RB.stop();
 }
 
-void CStop()
-{
-LF.setStopping(coast);
-LM.setStopping(coast);
-LB.setStopping(coast);
-RF.setStopping(coast);
-RM.setStopping(coast);
-RB.setStopping(coast);
+//Coast stop function for the drivetrain motors
+void CStop() {
+  LF.setStopping(coast);
+  LM.setStopping(coast);
+  LB.setStopping(coast);
+  RF.setStopping(coast);
+  RM.setStopping(coast);
+  RB.setStopping(coast);
 
-LF.stop();
-LM.stop();
-LB.stop();
-RF.stop();
-RM.stop();
-RB.stop();
+  LF.stop();
+  LM.stop();
+  LB.stop();
+  RF.stop();
+  RM.stop();
+  RB.stop();
+  }
+
+//Function to spin the intake rollers
+void RunRoller(int val) {
+  Roller.setMaxTorque(100, percent);
+  Roller.spin(forward, (double)val/100.0*12,volt);
+}
+
+//Function to spin the lift motors 
+void RunLift(int val) {
+  lift.setMaxTorque(100,percent);
+  lift.spin(forward, (double)val/100.0*12,volt);
 }
 
 
+//Below will be the PID movement functions for auton
 
-
-void RunRoller(int val)
-{
-Roller.setMaxTorque(100,percent);
-Roller.spin(forward,(double)val/100.0*12,volt);
-}
-void RunLift(int val)
-{
-lift.setMaxTorque(100,percent);
-lift.spin(forward,(double)val/100.0*12,volt);
-
-}
 int PrevE;//Error at t-1
 
 /** Moves the robot forward or backward. Negative speed moves
@@ -128,9 +128,9 @@ int PrevE;//Error at t-1
  * @param ABSHDG absolute heading of the robot
  * @param brake Brake at end, or coast
  */
-void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double ABSHDG,bool brake){
+void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double ABSHDG,bool brake) {
   double CSpeed=0;
-  Zeroing(true,false);
+  Zeroing(true, false);
   ChassisDataSet SensorVals;
   SensorVals=ChassisUpdate();
   double PVal=0;
@@ -141,33 +141,33 @@ void MoveEncoderPID(PIDDataSet KVals, int Speed, double dist,double AccT, double
   double Correction=0;
   Brain.Screen.clearScreen();
 
-  while(fabs(SensorVals.Avg) <= fabs(dist))
-  {
+  while (fabs(SensorVals.Avg) <= fabs(dist)) {
     //std::cout << SensorVals.Avg << " " << dist << std::endl;
-if(fabs(CSpeed)<fabs((double)Speed))
-{
-  CSpeed+=Speed/AccT*0.02;
-}
+    if(fabs(CSpeed)<fabs((double)Speed)) {
+      CSpeed+=Speed/AccT*0.02;
+    }
 
-  SensorVals=ChassisUpdate();
-  LGV=SensorVals.HDG-ABSHDG*Inversion_Constant;
-  if(LGV>180) LGV=LGV-360;
-  PVal=KVals.kp*LGV;
-  IVal=IVal+KVals.ki*LGV*0.02;
-  DVal=KVals.kd*(LGV-PrevE);
+    SensorVals=ChassisUpdate();
+    LGV=SensorVals.HDG-ABSHDG*Inversion_Constant;
+    if(LGV>180) LGV=LGV-360;
+    PVal=KVals.kp*LGV;
+    IVal=IVal+KVals.ki*LGV*0.02;
+    DVal=KVals.kd*(LGV-PrevE);
 
-  Correction=PVal+IVal+DVal/0.02;
+    Correction=PVal+IVal+DVal/0.02;
 
-  Move(CSpeed-Correction,CSpeed+Correction);
-  PrevE=LGV;
-  wait(20, msec);
+    Move(CSpeed-Correction,CSpeed+Correction);
+    PrevE=LGV;
+    wait(20, msec);
   }
-  if(brake){
+
+  if (brake) {
     BStop();
     wait(120,msec);
   }
   else CStop();
 }
+
 
 /** Moves the robot forward or backward. Negative speed moves
  * the robot forward. Positive value moves it backward. (Ik it's fucked up)
@@ -176,9 +176,9 @@ if(fabs(CSpeed)<fabs((double)Speed))
  * @param TE time to calculate turn (not time to turn)
  * @param brake Brake at end, or coast
  */
-void TurnMaxTimePID(PIDDataSet KVals,double DeltaAngle,double TE, bool brake){
+void TurnMaxTimePID(PIDDataSet KVals,double DeltaAngle,double TE, bool brake) {
   double CSpeed=0;
-  Zeroing(true,false);
+  Zeroing(true, false);
   ChassisDataSet SensorVals;
   SensorVals=ChassisUpdate();
   double PVal=0;
@@ -189,27 +189,28 @@ void TurnMaxTimePID(PIDDataSet KVals,double DeltaAngle,double TE, bool brake){
   double Correction=0;
   Brain.Timer.reset();
 
-  while(Brain.Timer.value() <= TE)
-  {
-  SensorVals=ChassisUpdate();
-  LGV=SensorVals.HDG-DeltaAngle*Inversion_Constant;
-  if(LGV>180) LGV=LGV-360;
-  PVal=KVals.kp*LGV;
-  IVal=IVal+KVals.ki*LGV*0.02;
-  DVal=KVals.kd*(LGV-PrevE);
+  while (Brain.Timer.value() <= TE) {
+    SensorVals=ChassisUpdate();
+    LGV=SensorVals.HDG-DeltaAngle*Inversion_Constant;
+    if(LGV>180) LGV=LGV-360;
+    PVal=KVals.kp*LGV;
+    IVal=IVal+KVals.ki*LGV*0.02;
+    DVal=KVals.kd*(LGV-PrevE);
 
-  Correction=PVal+IVal+DVal/0.02;
+    Correction=PVal+IVal+DVal/0.02;
 
-  Move(CSpeed-Correction,CSpeed+Correction);
-  PrevE=LGV;
-  wait(20, msec);
+    Move(CSpeed-Correction,CSpeed+Correction);
+    PrevE=LGV;
+    wait(20, msec);
   }
-  if(brake){BStop();
-  wait(180,msec);}
+  if (brake) {
+    BStop();
+    wait(180,msec);
+  }
   else CStop();
 }
 
-void MaxTimePIDTurnOneSide(PIDDataSet KVals,double DeltaAngle,double TE, bool brake){
+void MaxTimePIDTurnOneSide(PIDDataSet KVals,double DeltaAngle,double TE, bool brake) {
   double CSpeed=0;
   Zeroing(true,false);
   ChassisDataSet SensorVals;
@@ -223,31 +224,31 @@ void MaxTimePIDTurnOneSide(PIDDataSet KVals,double DeltaAngle,double TE, bool br
   double LV,RV;
   Brain.Timer.reset();
 
-  while(Brain.Timer.value() <= TE)
-  {
-  SensorVals=ChassisUpdate();
-  LGV=SensorVals.HDG-DeltaAngle*Inversion_Constant;
-  if(LGV>180) LGV=LGV-360;
-  PVal=KVals.kp*LGV;
-  IVal=IVal+KVals.ki*LGV*0.02;
-  DVal=KVals.kd*(LGV-PrevE);
+  while(Brain.Timer.value() <= TE) {
+    SensorVals=ChassisUpdate();
+    LGV=SensorVals.HDG-DeltaAngle*Inversion_Constant;
+    if(LGV>180) LGV=LGV-360;
+    PVal=KVals.kp*LGV;
+    IVal=IVal+KVals.ki*LGV*0.02;
+    DVal=KVals.kd*(LGV-PrevE);
 
-  Correction=PVal+IVal+DVal/0.02;
-LV=-CSpeed+Correction;
-RV=-CSpeed-Correction;
-if(LV>=0)LV=0;
-if(RV>=0)RV=0;
-  Move(LV,RV);
-  PrevE=LGV;
-  wait(20, msec);
+    Correction=PVal+IVal+DVal/0.02;
+    LV=-CSpeed+Correction;
+    RV=-CSpeed-Correction;
+    if(LV>=0)LV=0;
+    if(RV>=0)RV=0;
+    Move(LV,RV);
+    PrevE=LGV;
+    wait(20, msec);
   }
-  if(brake){BStop();
-  wait(200,msec);}
-  else CStop();
+    if (brake) {
+      BStop();
+      wait(200,msec);}
+    else CStop();
 }
 
 
-void MoveTimePID(PIDDataSet KVals, int Speed, double TE,double AccT,double ABSHDG, bool brake){
+void MoveTimePID(PIDDataSet KVals, int Speed, double TE,double AccT,double ABSHDG, bool brake) {
   double CSpeed=0;
   Zeroing(true,false);
   ChassisDataSet SensorVals;
@@ -260,27 +261,27 @@ void MoveTimePID(PIDDataSet KVals, int Speed, double TE,double AccT,double ABSHD
   double Correction=0;
   Brain.Timer.reset();
 
-  while(Brain.Timer.value() <= TE)
-  {
-if(fabs(CSpeed)<fabs((double)Speed))
-{
-  CSpeed+=Speed/AccT*0.02;
-}
+  while (Brain.Timer.value() <= TE) {
+    if (fabs(CSpeed)<fabs((double)Speed)) {
+      CSpeed+=Speed/AccT*0.02;
+    }
 
-  SensorVals=ChassisUpdate();
+    SensorVals=ChassisUpdate();
     LGV=SensorVals.HDG-ABSHDG*Inversion_Constant;
-  if(LGV>180) LGV=LGV-360;
-  PVal=KVals.kp*LGV;
-  IVal=IVal+KVals.ki*LGV*0.02;
-  DVal=KVals.kd*(LGV-PrevE);
+    if(LGV>180) LGV=LGV-360;
+    PVal=KVals.kp*LGV;
+    IVal=IVal+KVals.ki*LGV*0.02;
+    DVal=KVals.kd*(LGV-PrevE);
 
-  Correction=PVal+IVal+DVal/0.02;
+    Correction=PVal+IVal+DVal/0.02;
 
-  Move(-CSpeed-Correction,-CSpeed+Correction);
-  PrevE=LGV;
-  wait(20, msec);
+    Move(-CSpeed-Correction,-CSpeed+Correction);
+    PrevE=LGV;
+    wait(20, msec);
   }
-  if(brake){BStop();
-  wait(200,msec);}
+  if (brake) {
+    BStop();
+    wait(200,msec);
+  }
   else CStop();
 }
