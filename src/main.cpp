@@ -353,16 +353,16 @@ int ATask(void) {
       BTaskActiv = 0;        // Task is now inactive
     }
 
-
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
     if (hue >= 200 && hue <= 270 && !discDetected) {
       discDetected = true;
-      rightcolor =true;
+      rightcolor = true;
       Roller.resetPosition();
     }
     else if (hue >= 350 && hue<=10 && !discDetected) {
       discDetected = true;
-      rightcolor =false;
+      rightcolor = false;
       rollerSpinning = true;
       Roller.resetPosition();
 
