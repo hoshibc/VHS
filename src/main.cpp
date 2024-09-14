@@ -325,6 +325,7 @@ int delayStartTime = 0;
 bool rollerSpinning =false;
 vex::timer Timer;
 
+/*
 int ATask(void) {
 
   double pow;
@@ -395,9 +396,7 @@ int ATask(void) {
   // Control lift power based on button presses
   return 0; 
 }
-        
-        
-  //RunPuncher((Controller1.ButtonB.pressing())*100);
+*/
 
   
 
@@ -501,7 +500,7 @@ void usercontrol(void) {
     // values based on feedback from the joysticks.
     
     task Dtask=task(DriveTask);
-    task Atask=task(ATask);
+    //task Atask=task(ATask);
     task Ptask=task(PTask);
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to

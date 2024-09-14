@@ -11,20 +11,20 @@ brain  Brain;
 controller Controller1 = controller(primary);
 
 // Left side drivetrain
-motor LF = motor(PORT16, ratio6_1, true);
-motor LM = motor(PORT17, ratio6_1, true);
-motor LB = motor(PORT18, ratio6_1, true);
+motor LF = motor(PORT13, ratio6_1, false);
+motor LM = motor(PORT12, ratio6_1, false);
+motor LB = motor(PORT1, ratio6_1, false);
 
 // Right side drivetrain
-motor RF = motor(PORT3, ratio6_1, false);
-motor RM = motor(PORT13, ratio6_1, false);
-motor RB = motor(PORT20, ratio6_1, false);
+motor RF = motor(PORT5, ratio6_1, true);
+motor RM = motor(PORT3, ratio6_1, true);
+motor RB = motor(PORT14, ratio6_1, true);
 
 // Intake motor 
-motor In1 = motor(PORT11, ratio6_1, false);
+motor In1 = motor(PORT2, ratio6_1, false);
 
 // Lift 
-motor lift= motor(PORT9, ratio36_1, true);
+motor lift= motor(PORT11, ratio36_1, true);
 
 // Color sensor
 optical OpSens = optical(PORT1);
@@ -35,11 +35,11 @@ optical OpSens = optical(PORT1);
 motor_group Roller = motor_group(In1);
 
 //Pistons
-digital_out intakePiston = digital_out(Brain.ThreeWirePort.B);
-digital_out Clamp = digital_out(Brain.ThreeWirePort.A);
+digital_out intakePiston = digital_out(Brain.ThreeWirePort.H);
+digital_out Clamp = digital_out(Brain.ThreeWirePort.B);
 
 //Gyro and stuff for PID
-inertial Gyro = inertial(PORT2);
+inertial Gyro = inertial(PORT4);
 
 //Naming convention: 
 
